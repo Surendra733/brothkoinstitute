@@ -7,7 +7,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
+  
+   <style>
         body {
             font-family: 'Inter', sans-serif;
         }
@@ -37,36 +38,66 @@
 </head>
 <body class="bg-gray-50">
     <!-- Navigation -->
-    <nav class="bg-white shadow-lg fixed w-full top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-16">
-                <div class="flex items-center">
-                    <div class="flex-shrink-0 flex items-center">
-                        <span class="text-2xl font-bold text-indigo-600">BROTHKO</span>
-                        <span class="text-2xl font-light text-gray-800 ml-1">INSTITUTE</span>
-                    </div>
-                </div>
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="#home" class="text-gray-700 hover:text-indigo-600 font-medium">Home</a>
-                    <a href="#courses" class="text-gray-700 hover:text-indigo-600 font-medium">Courses</a>
-                    <a href="#trainers" class="text-gray-700 hover:text-indigo-600 font-medium">Trainers</a>
-                    <a href="#features" class="text-gray-700 hover:text-indigo-600 font-medium">Features</a>
-                    <a href="#contact" class="text-gray-700 hover:text-indigo-600 font-medium">Contact</a>
-                     <a href="practice.html" class="text-gray-700 hover:text-indigo-600 font-medium">Practice</a>
-                     <a href="compiler.html" class="text-gray-700 hover:text-indigo-600 font-medium">Compiler</a>
-
-                     <a href="admin.html" class="text-gray-700 hover:text-indigo-600 font-medium">Admin</a>
-
-                    <a href="#enroll" onclick="enrollpage()" class="bg-indigo-600 text-white px-6 py-2 rounded-lg font-medium hover:bg-indigo-700 transition duration-200">Enroll Now</a>
-                </div>
-                <div class="md:hidden flex items-center">
-                    <button class="text-gray-700">
-                        <i class="fas fa-bars text-xl"></i>
-                    </button>
-                </div>
-            </div>
+   <!-- Navigation -->
+  <nav class="bg-white shadow-lg fixed w-full top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-16">
+        
+        <!-- Logo -->
+        <div class="flex items-center">
+          <div class="flex-shrink-0 flex items-center">
+            <span class="text-2xl font-bold text-indigo-600">BROTHKO</span>
+            <span class="text-2xl font-light text-gray-800 ml-1">INSTITUTE</span>
+          </div>
         </div>
-    </nav>
+
+        <!-- Desktop Menu -->
+        <div class="hidden md:flex items-center space-x-8">
+          <a href="#home" class="text-gray-700 hover:text-indigo-600 font-medium">Home</a>
+          <a href="#courses" class="text-gray-700 hover:text-indigo-600 font-medium">Courses</a>
+          <a href="#trainers" class="text-gray-700 hover:text-indigo-600 font-medium">Trainers</a>
+          <a href="#features" class="text-gray-700 hover:text-indigo-600 font-medium">Features</a>
+          <a href="#contact" class="text-gray-700 hover:text-indigo-600 font-medium">Contact</a>
+          <a href="practice.html" class="text-gray-700 hover:text-indigo-600 font-medium">Practice</a>
+          <a href="compiler.html" class="text-gray-700 hover:text-indigo-600 font-medium">Compiler</a>
+          <a href="admin.html" class="text-gray-700 hover:text-indigo-600 font-medium">Admin</a>
+          <a href="#enroll" onclick="enrollpage()" class="bg-indigo-600 text-white px-6 py-2 rounded-lg font-medium hover:bg-indigo-700 transition duration-200">Enroll Now</a>
+        </div>
+
+        <!-- Mobile Hamburger -->
+        <div class="md:hidden flex items-center">
+          <button onclick="toggleSidebar()" class="text-gray-700 focus:outline-none">
+            <i class="fas fa-bars text-2xl"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Sidebar -->
+  <div id="sidebar" class="hidden fixed top-0 left-0 w-64 h-full bg-gray-900 text-white z-50 transition-transform">
+    <div class="p-6">
+      <button onclick="toggleSidebar()" class="text-white text-2xl mb-6">&times;</button>
+      <a href="#home" class="block py-2 hover:bg-gray-700 rounded">Home</a>
+      <a href="#courses" class="block py-2 hover:bg-gray-700 rounded">Courses</a>
+      <a href="#trainers" class="block py-2 hover:bg-gray-700 rounded">Trainers</a>
+      <a href="#features" class="block py-2 hover:bg-gray-700 rounded">Features</a>
+      <a href="#contact" class="block py-2 hover:bg-gray-700 rounded">Contact</a>
+      <a href="practice.html" class="block py-2 hover:bg-gray-700 rounded">Practice</a>
+      <a href="compiler.html" class="block py-2 hover:bg-gray-700 rounded">Compiler</a>
+      <a href="admin.html" class="block py-2 hover:bg-gray-700 rounded">Admin</a>
+      <a href="#enroll" onclick="enrollpage()" class="block py-2 mt-4 bg-indigo-600 text-center rounded-lg hover:bg-indigo-700">Enroll Now</a>
+    </div>
+  </div>
+
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <script>
+    function toggleSidebar() {
+      let sidebar = document.getElementById("sidebar");
+      sidebar.classList.toggle("hidden");
+    }
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
 
     <!-- Hero Section -->
     <section id="home" class="hero-gradient pt-24 pb-20 md:pt-32 md:pb-28">
