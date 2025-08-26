@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Brothko Institute Enrollment</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-blue-50">
+  <div class="min-h-screen flex flex-col">
+    <!-- Header -->
+    <header class="bg-blue-800 p-6 text-white text-center">
+      <h1 class="text-3xl font-bold">Brothko Institute</h1>
+      <p class="mt-2 text-lg">Enrollment Form</p>
+      <button onclick="backto()" style="margin-right:1300px; background-color: green; color: black; width: 70px; height: 40px; border: 2px solid black; border-radius: 3px;">Back</button>
+    </header>
+
+    <!-- Form Container -->
+    <main class="flex-grow flex items-center justify-center p-4">
+      <div class="bg-white rounded-lg shadow-lg w-full max-w-2xl p-6">
+        <!-- Embed Google Form -->
+        <iframe 
+          src="https://docs.google.com/forms/d/e/1FAIpQLSfap7lGBvSllOGQGpvDSs-nctmVX9Ri0H-KHyxhNK1h05Ep5Q/viewform?embedded=true" 
+          width="100%" 
+          height="900"
+          frameborder="0" 
+          marginheight="0" 
+          marginwidth="0"
+        >Loading…</iframe>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-blue-800 p-4 text-white text-center">
+      <small>&copy; 2025 Brothko Institute | Empowering Your Future</small>
+    </footer>
+  </div>
+
+  <script>
+
+    function backto(){
+      document.location.href="index.html"
+    }
+  </script>
+</body>
+</html>

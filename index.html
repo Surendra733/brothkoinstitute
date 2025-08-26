@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brothko Institute - Premium Java & Python Full Stack Development Training</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .course-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .course-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        .trainer-card {
+            transition: transform 0.3s ease;
+        }
+        .trainer-card:hover {
+            transform: translateY(-3px);
+        }
+        .stat-number {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg fixed w-full top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <span class="text-2xl font-bold text-indigo-600">BROTHKO</span>
+                        <span class="text-2xl font-light text-gray-800 ml-1">INSTITUTE</span>
+                    </div>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="text-gray-700 hover:text-indigo-600 font-medium">Home</a>
+                    <a href="#courses" class="text-gray-700 hover:text-indigo-600 font-medium">Courses</a>
+                    <a href="#trainers" class="text-gray-700 hover:text-indigo-600 font-medium">Trainers</a>
+                    <a href="#features" class="text-gray-700 hover:text-indigo-600 font-medium">Features</a>
+                    <a href="#contact" class="text-gray-700 hover:text-indigo-600 font-medium">Contact</a>
+                     <a href="practice.html" class="text-gray-700 hover:text-indigo-600 font-medium">Practice</a>
+                     <a href="admin.html" class="text-gray-700 hover:text-indigo-600 font-medium">Admin</a>
+
+                    <a href="#enroll" onclick="enrollpage()" class="bg-indigo-600 text-white px-6 py-2 rounded-lg font-medium hover:bg-indigo-700 transition duration-200">Enroll Now</a>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button class="text-gray-700">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-gradient pt-24 pb-20 md:pt-32 md:pb-28">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
+                        Master Full Stack Development with Industry Experts
+                    </h1>
+                    <p class="text-xl text-indigo-100 mt-6 mb-8">
+                        Transform your career with our premium Java & Python Full Stack programs. Get placement-ready with personalized training from industry veterans.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="enrollpage.html"  class="bg-white text-indigo-600 px-8 py-4 rounded-lg font-semibold text-center hover:bg-gray-50 transition duration-200">
+                            <button>Start Lirning Today</button>
+                        </a>
+                        <a href="#courses" class="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-center hover:bg-white hover:text-indigo-600 transition duration-200">
+                            Explore Courses
+                        </a>
+                    </div>
+                </div>
+                <div class="relative">
+                    <div class="bg-white rounded-2xl p-6 shadow-2xl">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/6d2a4274-fb33-4a72-8b13-a04b428f066b.png" alt="Modern coding workspace with dual monitors showing Java and Python code, coffee cup, and programming books" class="rounded-xl w-full h-auto" />
+                    </div>
+                    <div class="absolute -bottom-4 -left-4 bg-white p-4 rounded-xl shadow-lg">
+                        <div class="flex items-center">
+                            <div class="w-3 h-3 bg-green-400 rounded-full mr-2"></div>
+                            <span class="text-sm font-medium text-gray-700">98% Placement Rate</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="bg-white py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div>
+                    <div class="stat-number text-4xl md:text-5xl font-bold">500+</div>
+                    <div class="text-gray-600 mt-2">Students Trained</div>
+                </div>
+                <div>
+                    <div class="stat-number text-4xl md:text-5xl font-bold">98%</div>
+                    <div class="text-gray-600 mt-2">Placement Rate</div>
+                </div>
+                <div>
+                    <div class="stat-number text-4xl md:text-5xl font-bold">50+</div>
+                    <div class="text-gray-600 mt-2">Hiring Partners</div>
+                </div>
+                <div>
+                    <div class="stat-number text-4xl md:text-5xl font-bold">1000+</div>
+                    <div class="text-gray-600 mt-2">Hours of Training</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section id="courses" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Premium Full Stack Programs</h2>
+                <p class="text-xl text-gray-600 mt-4 max-w-3xl mx-auto">
+                    Choose from our industry-leading courses designed to make you job-ready
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Java Full Stack Card -->
+                <div class="course-card bg-white rounded-2xl p-8 shadow-lg">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center">
+                            <i class="fab fa-java text-red-600 text-2xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 ml-4">Java Full Stack</h3>
+                    </div>
+                    <p class="text-gray-600 mb-6">
+                        Master the complete Java ecosystem with Spring Boot, Hibernate, React, and modern DevOps tools. Become a full-stack Java developer in 6 months.
+                    </p>
+                    <div class="mb-6">
+                        <h4 class="font-semibold text-gray-900 mb-3">Technologies Covered:</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">Java 17</span>
+                            <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">Spring Boot</span>
+                            <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">Hibernate</span>
+                            <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">React.js</span>
+                            <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">MySQL</span>
+                            <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">AWS</span>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <div class="text-2xl font-bold text-indigo-600">₹45,000</div>
+                        <a href="#enroll" class="bg-indigo-600 text-white px-6 py-2 rounded-lg font-medium hover:bg-indigo-700 transition duration-200">
+                            Enroll Now
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Python Full Stack Card -->
+                <div class="course-card bg-white rounded-2xl p-8 shadow-lg">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                            <i class="fab fa-python text-blue-600 text-2xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 ml-4">Python Full Stack</h3>
+                    </div>
+                    <p class="text-gray-600 mb-6">
+                        Build modern web applications with Django, Flask, React, and cloud technologies. Perfect for beginners and experienced developers alike.
+                    </p>
+                    <div class="mb-6">
+                        <h4 class="font-semibold text-gray-900 mb-3">Technologies Covered:</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">Python 3</span>
+                            <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">Django</span>
+                            <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">Flask</span>
+                            <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">React.js</span>
+                            <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">PostgreSQL</span>
+                            <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">Docker</span>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <div class="text-2xl font-bold text-indigo-600">₹42,000</div>
+                        <a href="#enroll" class="bg-indigo-600 text-white px-6 py-2 rounded-lg font-medium hover:bg-indigo-700 transition duration-200">
+                            Enroll Now
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trainers Section -->
+    <section id="trainers" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Meet Our Expert Trainers</h2>
+                <p class="text-xl text-gray-600 mt-4">
+                    Learn from industry professionals with decades of combined experience
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Trainer 1 -->
+                <div class="trainer-card bg-gray-50 rounded-2xl p-6 text-center">
+                    <div class="w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden border-4 border-white shadow-lg">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/4ef37fc9-9db4-438d-b71c-479f41c48909.png" alt="Vishnu Srivastava - Senior Java Architect with 12 years experience in enterprise software development" class="w-full h-full object-cover" />
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900">Vishnu Srivastava</h3>
+                    <p class="text-indigo-600 font-medium">Senior Java Architect</p>
+                    <p class="text-gray-600 mt-3">12+ years experience in enterprise software development. Former Tech Lead at Infosys and TCS. Specialized in Spring Boot and Microservices.</p>
+                    <div class="flex justify-center mt-4 space-x-3">
+                        <a href="#" class="text-gray-400 hover:text-indigo-600"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-indigo-600"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+
+                <!-- Trainer 2 -->
+                <div class="trainer-card bg-gray-50 rounded-2xl p-6 text-center">
+                    <div class="w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden border-4 border-white shadow-lg">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/695b7da0-da3e-4971-a42f-2afe98101063.png" alt="Rohit Yadav - Python Full Stack Developer with expertise in Django and cloud technologies" class="w-full h-full object-cover" />
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900">Rohit Yadav</h3>
+                    <p class="text-indigo-600 font-medium">Python Full Stack Expert</p>
+                    <p class="text-gray-600 mt-3">10+ years in web development. Built scalable applications for startups and enterprises. Expert in Django, Flask, and cloud deployment.</p>
+                    <div class="flex justify-center mt-4 space-x-3">
+                        <a href="#" class="text-gray-400 hover:text-indigo-600"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-indigo-600"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+
+                <!-- Trainer 3 -->
+                <div class="trainer-card bg-gray-50 rounded-2xl p-6 text-center">
+                    <div class="w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden border-4 border-white shadow-lg">
+                        <img src="./linkdin pic.jpg" alt="Surendra Pandey - Placement Specialist and Interview Coach with HR background" class="w-full h-full object-cover" />
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900">Surendra Pandey</h3>
+                    <p class="text-indigo-600 font-medium">Placement Specialist</p>
+                    <p class="text-gray-600 mt-3">8+ years in HR and recruitment. Former hiring manager at Wipro. Specializes in interview preparation, resume building, and soft skills training.</p>
+                    <div class="flex justify-center mt-4 space-x-3">
+                        <a href="#" class="text-gray-400 hover:text-indigo-600"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-indigo-600"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Why Choose Brothko Institute?</h2>
+                <p class="text-xl text-gray-600 mt-4">
+                    Comprehensive training that goes beyond just coding
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-2xl shadow-lg">
+                    <div class="w-14 h-14 bg-green-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-briefcase text-green-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Placement Training</h3>
+                    <p class="text-gray-600">Mock interviews, resume building, and company-specific preparation to ensure you land your dream job.</p>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl shadow-lg">
+                    <div class="w-14 h-14 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-laptop-code text-blue-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Live Projects</h3>
+                    <p class="text-gray-600">Work on real-world projects that mirror industry scenarios and build a portfolio that stands out.</p>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl shadow-lg">
+                    <div class="w-14 h-14 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-users text-purple-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">1:1 Mentorship</h3>
+                    <p class="text-gray-600">Personalized guidance from industry experts to help you overcome challenges and accelerate your learning.</p>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl shadow-lg">
+                    <div class="w-14 h-14 bg-red-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-certificate text-red-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Industry Certification</h3>
+                    <p class="text-gray-600">Get certified with recognition from top tech companies and add credibility to your skills.</p>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl shadow-lg">
+                    <div class="w-14 h-14 bg-yellow-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-chalkboard-teacher text-yellow-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Interview Preparation</h3>
+                    <p class="text-gray-600">Comprehensive interview training covering technical rounds, HR discussions, and negotiation skills.</p>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl shadow-lg">
+                    <div class="w-14 h-14 bg-indigo-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-handshake text-indigo-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Hiring Partner Network</h3>
+                    <p class="text-gray-600">Direct access to our network of 50+ hiring partners including startups and Fortune 500 companies.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Success Stories</h2>
+                <p class="text-xl text-gray-600 mt-4">
+                    Hear from our students who transformed their careers
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-gray-50 p-6 rounded-2xl">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-gray-300 rounded-full"></div>
+                        <div class="ml-4">
+                            <h4 class="font-bold text-gray-900">Rahul Sharma</h4>
+                            <p class="text-sm text-gray-600">Software Engineer @ Amazon</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"The Java Full Stack course completely changed my career. The placement training helped me crack Amazon with a package of 18 LPA."</p>
+                </div>
+
+                <div class="bg-gray-50 p-6 rounded-2xl">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-gray-300 rounded-full"></div>
+                        <div class="ml-4">
+                            <h4 class="font-bold text-gray-900">Priya Singh</h4>
+                            <p class="text-sm text-gray-600">Full Stack Developer @ Microsoft</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"Python course with Brothko Institute was the best decision. The projects were industry-relevant and helped me build a strong portfolio."</p>
+                </div>
+
+                <div class="bg-gray-50 p-6 rounded-2xl">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-gray-300 rounded-full"></div>
+                        <div class="ml-4">
+                            <h4 class="font-bold text-gray-900">Amit Kumar</h4>
+                            <p class="text-sm text-gray-600">DevOps Engineer @ Google</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"The interview preparation sessions were incredibly helpful. Surendra Sir's guidance on negotiation helped me get 30% higher offer."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-indigo-600">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">Ready to Start Your Tech Journey?</h2>
+                    <p class="text-indigo-100 text-xl mb-8">
+                        Join hundreds of successful students who transformed their careers with Brothko Institute.
+                    </p>
+                    <div class="space-y-4">
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 bg-white bg-opacity-20 rounded-full flex items-center justify-center mr-4">
+                                <i class="fas fa-phone text-white text-sm"></i>
+                            </div>
+                            <span class="text-white">+91 9876543210</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 bg-white bg-opacity-20 rounded-full flex items-center justify-center mr-4">
+                                <i class="fas fa-envelope text-white text-sm"></i>
+                            </div>
+                            <span class="text-white">info@brothkoinstitute.com</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 bg-white bg-opacity-20 rounded-full flex items-center justify-center mr-4">
+                                <i class="fas fa-map-marker-alt text-white text-sm"></i>
+                            </div>
+                            <span class="text-white">Tech Park, Sector 62,
+
+    <!-- Inquiry Form Popup (Modal) -->
+<div id="inquiryModal" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center z-50">
+  <div id="modalContent" class="bg-white rounded-2xl shadow-lg p-8 w-full max-w-lg relative opacity-0 scale-95 transition-all duration-500">
+    <!-- Close Button -->
+    <button onclick="closeModal()" class="absolute top-3 right-3 text-gray-600 hover:text-red-500 text-xl">
+      &times;
+    </button>
+
+    <h3 class="text-2xl font-bold text-gray-900 mb-6">Student Inquiry Form</h3>
+    <form id="inquiryForm" class="space-y-4">
+      
+<div>
+  <label class="block text-gray-700 font-medium mb-2">Full Name</label>
+  <input type="text" name="name" required 
+    class="w-full px-4 py-2 border rounded-lg text-gray-900 focus:ring-2 focus:ring-indigo-500 outline-none">
+</div>
+    
+<div>
+  <label class="block text-gray-700 font-medium mb-2">Email</label>
+  <input type="text" name="name" required 
+    class="w-full px-4 py-2 border rounded-lg text-gray-900 focus:ring-2 focus:ring-indigo-500 outline-none">
+</div>
+      
+<div>
+  <label class="block text-gray-700 font-medium mb-2">Phone Number</label>
+  <input type="text" name="name" required 
+    class="w-full px-4 py-2 border rounded-lg text-gray-900 focus:ring-2 focus:ring-indigo-500 outline-none">
+</div>
+      <div>
+        <label class="block text-gray-700 font-medium mb-2">Message</label>
+        <textarea name="message" rows="4" class="w-full px-4 py-2 border rounded-lg text-gray-900 focus:ring-2 focus:ring-indigo-500 outline-none"></textarea>
+      </div>
+      <button type="submit" class="w-full bg-indigo-600 text-white py-3 rounded-lg font-semibold hover:bg-indigo-700 transition duration-200">
+        Submit Inquiry
+      </button>
+    </form>
+  </div>
+</div>
+
+
+
+<!-- Floating Chatbot Button -->
+<div id="chatbotWidget" class="fixed bottom-6 right-6 z-50">
+  <button onclick="toggleChatbot()" 
+    class="bg-indigo-600 text-white w-16 h-16 rounded-full shadow-lg hover:bg-indigo-700 text-2xl">
+    💬
+  </button>
+</div>
+
+<!-- Chatbot Window -->
+<div id="chatbotWindow" 
+  class="hidden fixed bottom-0 right-0 w-full h-1/2 md:bottom-20 md:right-6 md:w-[600px] md:h-[500px] bg-white rounded-t-2xl md:rounded-2xl shadow-lg flex flex-col z-40">
+
+  <!-- Header -->
+  <div class="bg-indigo-600 text-white p-3 rounded-t-2xl flex justify-between items-center">
+    <span class="font-semibold">Brothko Bot</span>
+    <button onclick="toggleChatbot()" class="text-white">✖</button>
+  </div>
+
+  <!-- Chat Messages -->
+  <div id="chatMessages" class="flex-1 p-3 overflow-y-auto bg-gray-50"></div>
+
+  <!-- Quick Suggestions -->
+<div class="p-2 border-t bg-gray-100 flex flex-wrap gap-2">
+  <button onclick="sendQuick('fees')" class="bg-indigo-100 text-indigo-700 px-3 py-1 rounded-full text-sm">Fees</button>
+  <button onclick="sendQuick('course')" class="bg-indigo-100 text-indigo-700 px-3 py-1 rounded-full text-sm">Course Info</button>
+  <button onclick="sendQuick('contact')" class="bg-indigo-100 text-indigo-700 px-3 py-1 rounded-full text-sm">Contact</button>
+  <button onclick="sendQuick('timing')" class="bg-indigo-100 text-indigo-700 px-3 py-1 rounded-full text-sm">Timing</button>
+  <button onclick="sendQuick('placement')" class="bg-indigo-100 text-indigo-700 px-3 py-1 rounded-full text-sm">Placement</button>
+</div>
+
+  <!-- Input Area -->
+  <div class="p-2 border-t flex">
+    <input 
+      id="chatInput" 
+      type="text" 
+      placeholder="Type..." 
+      class="flex-1 border border-gray-300 rounded-lg px-2 py-2 bg-white text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+    />
+    <button onclick="sendChat()" class="ml-2 bg-indigo-600 text-white px-3 py-1 rounded-lg">Send</button>
+  </div>
+
+
+</div>
+
+<script>
+let knowledgeBase = [];
+
+// Load qa.json
+fetch("qa.json")
+  .then(res => res.json())
+  .then(data => knowledgeBase = data);
+
+// Add message
+function addChatMessage(text, isUser = false) {
+  const msgDiv = document.createElement("div");
+  msgDiv.className = `mb-2 ${isUser ? 'text-right' : 'text-left'}`;
+  msgDiv.innerHTML = `<span class="inline-block px-3 py-2 rounded-lg ${isUser ? 'bg-indigo-600 text-white' : 'bg-gray-200 text-gray-800'}">${text}</span>`;
+  document.getElementById("chatMessages").appendChild(msgDiv);
+  document.getElementById("chatMessages").scrollTop = document.getElementById("chatMessages").scrollHeight;
+}
+
+// Find response
+function getResponse(userMsg) {
+  userMsg = userMsg.toLowerCase();
+  for (let item of knowledgeBase) {
+    if (userMsg.includes(item.q.toLowerCase())) {
+      return item.a;
+    }
+  }
+  return "I'm not sure 🤔. Please contact our counselor Surendra at 📞 8319428709.";
+}
+
+// Send message
+function sendChat() {
+  const input = document.getElementById("chatInput");
+  const message = input.value.trim();
+  if (!message) return;
+
+  addChatMessage(message, true);
+  input.value = "";
+
+  setTimeout(() => {
+    const reply = getResponse(message);
+    addChatMessage(reply, false);
+  }, 500);
+}
+
+// Enter key support
+document.getElementById("chatInput").addEventListener("keypress", (e) => {
+  if (e.key === "Enter") sendChat();
+});
+
+// Toggle chatbot visibility with welcome message
+function toggleChatbot() {
+  const chatWindow = document.getElementById("chatbotWindow");
+  const chatMessages = document.getElementById("chatMessages");
+
+  const isHidden = chatWindow.classList.contains("hidden");
+  chatWindow.classList.toggle("hidden");
+
+  if (isHidden && chatMessages.innerHTML.trim() === "") {
+    setTimeout(() => {
+      addChatMessage("👋 Welcome to Brothko Institute Bot! How can I help you today?", false);
+    }, 300);
+  }
+}
+
+function sendQuick(msg) {
+  addChatMessage(msg, true);
+  setTimeout(() => {
+    const reply = getResponse(msg);
+    addChatMessage(reply, false);
+  }, 400);
+}
+
+</script>
+
+
+
+
+
+<!-- Script -->
+<script>
+  // Show popup after 4 seconds with animation
+  window.addEventListener("load", () => {
+    setTimeout(() => {
+      const modal = document.getElementById("inquiryModal");
+      const content = document.getElementById("modalContent");
+      modal.classList.remove("hidden");
+      setTimeout(() => {
+        content.classList.remove("opacity-0", "scale-95");
+      }, 50);
+    }, 4000);
+  });
+
+  // Close popup
+  function closeModal() {
+    const modal = document.getElementById("inquiryModal");
+    const content = document.getElementById("modalContent");
+    content.classList.add("opacity-0", "scale-95");
+    setTimeout(() => {
+      modal.classList.add("hidden");
+    }, 300); // wait for animation to finish
+  }
+
+  // Redirect to homepage after submit
+  document.getElementById("inquiryForm").addEventListener("submit", function(e) {
+    e.preventDefault(); // prevent actual form submission
+    window.location.href = "index.html"; // change "index.html" to your homepage URL
+  });
+
+  function enrollpage(){
+    document.location.href="enrollpage.html";
+  }
+</script>
+

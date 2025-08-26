@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brothko Institute - Practice</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 min-h-screen flex items-center justify-center p-6">
+
+  <!-- Login Box -->
+  <div id="loginBox" class="bg-white shadow-2xl rounded-2xl p-8 w-full max-w-md transform transition-all hover:scale-105 duration-300">
+    <h2 class="text-3xl font-extrabold text-center text-indigo-600 mb-6">Login to Practice</h2>
+    
+    <input id="email" type="email" placeholder="📧 Email" class="w-full border rounded-xl p-3 mb-4 focus:ring-2 focus:ring-indigo-400 outline-none">
+    <input id="password" type="password" placeholder="🔑 Password" class="w-full border rounded-xl p-3 mb-4 focus:ring-2 focus:ring-indigo-400 outline-none">
+    
+    <button onclick="login()" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-3 rounded-xl font-semibold shadow-md transition-all">🚀 Login</button>
+    <button onclick="backto()" class="w-full bg-gray-700 hover:bg-gray-800 text-white py-3 rounded-xl mt-3 font-semibold shadow-md transition-all">🏠 Back To Home</button>
+    
+    <p id="errorMsg" class="text-red-600 mt-4 text-center font-semibold"></p>
+  </div>
+
+  <!-- Quiz Section -->
+  <div id="quizBox" class="hidden bg-white shadow-2xl rounded-2xl p-8 w-full max-w-4xl animate__animated animate__fadeIn">
+    <h2 class="text-3xl font-extrabold text-center text-green-600 mb-6">MCQ Practice</h2>
+
+    <!-- Navigation Buttons -->
+    <div class="flex justify-center flex-wrap gap-4 mb-6">
+      <button onclick="loadQuestions('java')" class="px-6 py-2 bg-indigo-600 text-white rounded-xl shadow-md hover:scale-105 transform transition">☕ Java</button>
+      <button onclick="loadQuestions('python')" class="px-6 py-2 bg-green-600 text-white rounded-xl shadow-md hover:scale-105 transform transition">🐍 Python</button>
+      <button onclick="loadQuestions('htmlcss')" class="px-6 py-2 bg-pink-600 text-white rounded-xl shadow-md hover:scale-105 transform transition">🌐 HTML & CSS</button>
+      <button onclick="loadQuestions('javascript')" class="px-6 py-2 bg-yellow-500 text-white rounded-xl shadow-md hover:scale-105 transform transition">⚡ JavaScript</button>
+      <button onclick="quixeload()" class="px-6 py-2 bg-yellow-500 text-white rounded-xl shadow-md hover:scale-105 transform transition">Quiz</button>
+      
+    </div>
+
+    <!-- Questions -->
+    <div id="questions" class="space-y-6"></div>
+
+    <button onclick="logout()" class="mt-6 bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-xl shadow-md font-semibold transition">🚪 Logout</button>
+  </div>
+
+  <script>
+    let allQuestions = {};
+    let currentQuestions = [];
+
+    // Render Questions
+    function renderQuestions(questions) {
+      const container = document.getElementById("questions");
+      container.innerHTML = "";
+      questions.forEach((q, index) => {
+        const div = document.createElement("div");
+        div.classList.add("p-5", "border", "rounded-xl", "shadow-md", "hover:shadow-lg", "transition-all", "bg-gray-50");
+        div.innerHTML = `
+          <p class="font-bold mb-3 text-lg text-gray-800">${index + 1}. ${q.q}</p>
+          ${q.options.map(opt => `
+            <button 
+              onclick="checkAnswer(${index}, '${opt}', this)" 
+              class="option-btn block w-full text-left border rounded-xl p-3 mb-2 hover:bg-indigo-100 transition-all">
+              ${opt}
+            </button>
+          `).join("")}
+        `;
+        container.appendChild(div);
+      });
+    }
+
+    // Check Answer
+    function checkAnswer(index, selected, btn) {
+      const correct = currentQuestions[index].answer;
+      if (selected === correct) {
+        btn.classList.add("bg-green-500", "text-white");
+      } else {
+        btn.classList.add("bg-red-500", "text-white");
+      }
+    }
+    window.checkAnswer = checkAnswer;
+
+    // Load Questions by Language
+    function loadQuestions(lang) {
+      if (allQuestions[lang]) {
+        currentQuestions = allQuestions[lang];
+        renderQuestions(currentQuestions);
+      }
+    }
+    window.loadQuestions = loadQuestions;
+
+    // Login using pract.json
+    async function login() {
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value.trim();
+
+      try {
+        const resUser = await fetch("pract.json");
+        const dataUser = await resUser.json();
+
+        const user = dataUser.users.find(u => u.email === email && u.password === password);
+
+        if (user) {
+          document.getElementById("loginBox").classList.add("hidden");
+          document.getElementById("quizBox").classList.remove("hidden");
+
+          // Load Questions JSON
+          const resQ = await fetch("questions.json");
+          allQuestions = await resQ.json();
+
+          // Default load Java
+          loadQuestions("java");
+        } else {
+          document.getElementById("errorMsg").innerText = "❌ Invalid Email or Password";
+        }
+      } catch (err) {
+        document.getElementById("errorMsg").innerText = "⚠️ Error loading data";
+      }
+    }
+    window.login = login;
+
+    // Logout
+    function logout() {
+      document.getElementById("quizBox").classList.add("hidden");
+      document.getElementById("loginBox").classList.remove("hidden");
+      document.getElementById("email").value = "";
+      document.getElementById("password").value = "";
+      document.getElementById("errorMsg").innerText = "";
+    }
+    window.logout = logout;
+
+    function backto(){
+      document.location.href="index.html"
+    }
+
+    function quixeload(){
+    document.location.href="quiz.html"
+    }
+  </script>
+</body>
+</html>

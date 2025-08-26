@@ -1,0 +1,3591 @@
+{
+  "java": [
+    {
+      "q": "Which keyword is used to inherit a class in Java?",
+      "options": [
+        "this",
+        "super",
+        "extends",
+        "implements"
+      ],
+      "answer": "extends"
+    },
+    {
+      "q": "Which method is the entry point of a Java program?",
+      "options": [
+        "start()",
+        "init()",
+        "main()",
+        "run()"
+      ],
+      "answer": "main()"
+    },
+    {
+      "q": "What is the default value of a boolean variable in Java?",
+      "options": [
+        "true",
+        "false",
+        "null",
+        "0"
+      ],
+      "answer": "false"
+    },
+    {
+      "q": "Which of the following is not a Java keyword?",
+      "options": [
+        "class",
+        "public",
+        "void",
+        "main"
+      ],
+      "answer": "main"
+    },
+    {
+      "q": "What is the size of an int variable in Java?",
+      "options": [
+        "8 bits",
+        "16 bits",
+        "32 bits",
+        "64 bits"
+      ],
+      "answer": "32 bits"
+    },
+    {
+      "q": "Which of the following is a valid declaration of a char?",
+      "options": [
+        "char c = 'c';",
+        "char c = 'cc';",
+        "char c = \"c\";",
+        "char c = c;"
+      ],
+      "answer": "char c = 'c';"
+    },
+    {
+      "q": "What is the output of the following code: System.out.println(1 + 2 + '3');?",
+      "options": [
+        "33",
+        "6",
+        "123",
+        "Error"
+      ],
+      "answer": "33"
+    },
+    {
+      "q": "Which of the following is a valid way to create an array in Java?",
+      "options": [
+        "int arr[] = new int[5];",
+        "int arr = new int[5];",
+        "int arr[] = int[5];",
+        "int arr = int[5];"
+      ],
+      "answer": "int arr[] = new int[5];"
+    },
+    {
+      "q": "What is the purpose of the 'final' keyword in Java?",
+      "options": [
+        "To declare a constant variable",
+        "To prevent method overriding",
+        "To prevent inheritance",
+        "All of the above"
+      ],
+      "answer": "All of the above"
+    },
+    {
+      "q": "Which of the following is used to handle exceptions in Java?",
+      "options": [
+        "try-catch",
+        "throw",
+        "throws",
+        "All of the above"
+      ],
+      "answer": "All of the above"
+    },
+    {
+      "q": "What is the output of the following code: System.out.println(10 + 20 + \"30\");?",
+      "options": [
+        "30",
+        "1020",
+        "1030",
+        "Error"
+      ],
+      "answer": "1030"
+    },
+    {
+      "q": "Which of the following is not a valid access modifier in Java?",
+      "options": [
+        "public",
+        "private",
+        "protected",
+        "internal"
+      ],
+      "answer": "internal"
+    },
+    {
+      "q": "What is the default value of an integer variable in Java?",
+      "options": [
+        "0",
+        "1",
+        "null",
+        "undefined"
+      ],
+      "answer": "0"
+    },
+    {
+      "q": "Which of the following statements is true about Java?",
+      "options": [
+        "Java is platform-dependent.",
+        "Java is a compiled language.",
+        "Java supports multiple inheritance.",
+        "Java is a high-level programming language."
+      ],
+      "answer": "Java is a high-level programming language."
+    },
+    {
+      "q": "What is the purpose of the 'static' keyword in Java?",
+      "options": [
+        "To declare a class variable",
+        "To declare a method that belongs to the class",
+        "To prevent method overriding",
+        "Both A and B"
+      ],
+      "answer": "Both A and B"
+    },
+    {
+      "q": "Which of the following is a valid way to declare a string in Java?",
+      "options": [
+        "String str = 'Hello';",
+        "String str = \"Hello\";",
+        "String str = new String('Hello');",
+        "String str = new String(\"Hello\");"
+      ],
+      "answer": "String str = \"Hello\";"
+    },
+    {
+      "q": "What is the output of the following code: System.out.println(5 == 5 ? \"True\" : \"False\");?",
+      "options": [
+        "True",
+        "False",
+        "Error",
+        "None of the above"
+      ],
+      "answer": "True"
+    },
+    {
+      "q": "Which of the following is used to create a thread in Java?",
+      "options": [
+        "Runnable interface",
+        "Thread class",
+        "Both A and B",
+        "None of the above"
+      ],
+      "answer": "Both A and B"
+    },
+    {
+      "q": "What is the purpose of the 'synchronized' keyword in Java?",
+      "options": [
+        "To allow multiple threads to access a method",
+        "To prevent multiple threads from accessing a method",
+        "To create a thread",
+        "None of the above"
+      ],
+      "answer": "To prevent multiple threads from accessing a method"
+    },
+    {
+      "q": "Which of the following is a valid way to declare a method in Java?",
+      "options": [
+        "void methodName() {}",
+        "methodName() void {}",
+        "void methodName()",
+        "methodName() {}"
+      ],
+      "answer": "void methodName() {}"
+    },
+    {
+      "q": "What is the output of the following code: System.out.println(10 / 3);?",
+      "options": [
+        "3",
+        "3.0",
+        "3.333",
+        "Error"
+      ],
+      "answer": "3"
+    },
+    {
+      "q": "Which of the following is a valid way to create an instance of a class in Java?",
+      "options": [
+        "ClassName obj = new ClassName();",
+        "ClassName obj = ClassName();",
+        "ClassName obj = new ClassName;",
+        "ClassName obj = new ClassName[];"
+      ],
+      "answer": "ClassName obj = new ClassName();"
+    },
+    {
+      "q": "What is the purpose of the 'abstract' keyword in Java?",
+      "options": [
+        "To declare a class that cannot be instantiated",
+        "To declare a method without an implementation",
+        "Both A and B",
+        "None of the above"
+      ],
+      "answer": "Both A and B"
+    },
+    {
+      "q": "Which of the following is a valid way to implement an interface in Java?",
+      "options": [
+        "class ClassName implements InterfaceName {}",
+        "class ClassName extends InterfaceName {}",
+        "class ClassName interface InterfaceName {}",
+        "None of the above"
+      ],
+      "answer": "class ClassName implements InterfaceName {}"
+    },
+    {
+      "q": "What is the output of the following code: System.out.println(\"Hello\".length());?",
+      "options": [
+        "5",
+        "4",
+        "Error",
+        "None of the above"
+      ],
+      "answer": "5"
+    },
+    {
+      "q": "Which of the following is a valid way to declare a constant in Java?",
+      "options": [
+        "final int x = 10;",
+        "const int x = 10;",
+        "int x = 10;",
+        "static int x = 10;"
+      ],
+      "answer": "final int x = 10;"
+    },
+    {
+      "q": "What is the output of the following code: System.out.println(5 + 10 + \"15\");?",
+      "options": [
+        "15",
+        "1515",
+        "Error",
+        "None of the above"
+      ],
+      "answer": "1515"
+    },
+    {
+      "q": "Which of the following is a valid way to declare a multi-dimensional array in Java?",
+      "options": [
+        "int[][] arr = new int[5][5];",
+        "int arr[][] = new int[5][5];",
+        "Both A and B",
+        "None of the above"
+      ],
+      "answer": "Both A and B"
+    },
+    {
+      "q": "What is the output of the following code: System.out.println(10 % 3);?",
+      "options": [
+        "1",
+        "3",
+        "0",
+        "Error"
+      ],
+      "answer": "1"
+    },
+    {
+      "q": "Which of the following is a valid way to declare a constructor in Java?",
+      "options": [
+        "ClassName() {}",
+        "void ClassName() {}",
+        "ClassName() void {}",
+        "None of the above"
+      ],
+      "answer": "ClassName() {}"
+    },
+    {
+      "q": "What is the output of the following code: System.out.println(\"Hello\".toUpperCase());?",
+      "options": [
+        "HELLO",
+        "Hello",
+        "Error",
+        "None of the above"
+      ],
+      "answer": "HELLO"
+    },
+    {
+      "q": "Which of the following is a valid way to declare an interface in Java?",
+      "options": [
+        "interface InterfaceName {}",
+        "class InterfaceName {}",
+        "abstract class InterfaceName {}",
+        "None of the above"
+      ],
+      "answer": "interface InterfaceName {}"
+    },
+    {
+      "q": "What is the output of the following code: System.out.println(5 + 5 + 5);?",
+      "options": [
+        "15",
+        "5",
+        "Error",
+        "None of the above"
+      ],
+      "answer": "15"
+    },
+    {
+      "q": "Which of the following is a valid way to declare a package in Java?",
+      "options": [
+        "package com.example;",
+        "import com.example;",
+        "namespace com.example;",
+        "None of the above"
+      ],
+      "answer": "package com.example;"
+    },
+    {
+      "q": "What is the output of the following code: System.out.println(5 == 5 && 10 > 5);?",
+      "options": [
+        "true",
+        "false",
+        "Error",
+        "None of the above"
+      ],
+      "answer": "true"
+    },
+    {
+      "q": "Which of the following is a valid way to declare a list in Java?",
+      "options": [
+        "List<String> list = new ArrayList<>();",
+        "ArrayList<String> list = new List<>();",
+        "List<String> list = new List<String>();",
+        "None of the above"
+      ],
+      "answer": "List<String> list = new ArrayList<>();"
+    },
+    {
+      "q": "What is the output of the following code: System.out.println(\"Hello\".substring(1, 3));?",
+      "options": [
+        "He",
+        "el",
+        "Hello",
+        "Error"
+      ],
+      "answer": "el"
+    },
+    {
+      "q": "Which of the following is a valid way to declare a map in Java?",
+      "options": [
+        "Map<String, String> map = new HashMap<>();",
+        "HashMap<String, String> map = new Map<>();",
+        "Map<String, String> map = new Map<String, String>();",
+        "None of the above"
+      ],
+      "answer": "Map<String, String> map = new HashMap<>();"
+    },
+    {
+      "q": "What is the output of the following code: System.out.println(5 > 3 ? \"Yes\" : \"No\");?",
+      "options": [
+        "Yes",
+        "No",
+        "Error",
+        "None of the above"
+      ],
+      "answer": "Yes"
+    },
+    {
+      "q": "Which of the following is a valid way to declare a set in Java?",
+      "options": [
+        "Set<String> set = new HashSet<>();",
+        "HashSet<String> set = new Set<>();",
+        "Set<String> set = new Set<String>();",
+        "None of the above"
+      ],
+      "answer": "Set<String> set = new HashSet<>();"
+    },
+    {
+      "q": "What is the output of the following code: System.out.println(\"Hello\".equals(\"Hello\"));?",
+      "options": [
+        "true",
+        "false",
+        "Error",
+        "None of the above"
+      ],
+      "answer": "true"
+    },
+    {
+      "q": "Which of the following is a valid way to declare a queue in Java?",
+      "options": [
+        "Queue<String> queue = new LinkedList<>();",
+        "LinkedList<String> queue = new Queue<>();",
+        "Queue<String> queue = new Queue<String>();",
+        "None of the above"
+      ],
+      "answer": "Queue<String> queue = new LinkedList<>();"
+    },
+    {
+      "q": "What is the output of the following code: System.out.println(5 + 5 + 5 + \"5\");?",
+      "options": [
+        "555",
+        "15",
+        "Error",
+        "None of the above"
+      ],
+      "answer": "555"
+    },
+    {
+      "q": "Which of the following is a valid way to declare a thread-safe collection in Java?",
+      "options": [
+        "Collections.synchronizedList(new ArrayList<>());",
+        "new ArrayList<>().synchronized();",
+        "new SynchronizedList<>();",
+        "None of the above"
+      ],
+      "answer": "Collections.synchronizedList(new ArrayList<>());"
+    },
+    {
+      "q": "What is the output of the following code: System.out.println(\"Hello\".indexOf('e'));?",
+      "options": [
+        "1",
+        "0",
+        "Error",
+        "None of the above"
+      ],
+      "answer": "1"
+    },
+    {
+      "q": "Which of the following is a valid way to declare a lambda expression in Java?",
+      "options": [
+        "(x) -> x + 1",
+        "x -> x + 1",
+        "(x) : x + 1",
+        "None of the above"
+      ],
+      "answer": "(x) -> x + 1"
+    },
+    {
+      "q": "What is the output of the following code: System.out.println(\"Hello\".replace('e', 'a'));?",
+      "options": [
+        "Hallo",
+        "Hello",
+        "Error",
+        "None of the above"
+      ],
+      "answer": "Hallo"
+    },
+    {
+      "q": "Which of the following is a valid way to declare a stream in Java?",
+      "options": [
+        "Stream<String> stream = list.stream();",
+        "list.stream() = new Stream<>();",
+        "Stream<String> stream = new Stream<>();",
+        "None of the above"
+      ],
+      "answer": "Stream<String> stream = list.stream();"
+    },
+    {
+      "q": "What is the output of the following code: System.out.println(\"Hello\".charAt(0));?",
+      "options": [
+        "H",
+        "e",
+        "Error",
+        "None of the above"
+      ],
+      "answer": "H"
+    },
+    {
+      "q": "Which of the following is a valid way to declare a method that returns a value in Java?",
+      "options": [
+        "int methodName() {}",
+        "void methodName() {}",
+        "methodName() int {}",
+        "None of the above"
+      ],
+      "answer": "int methodName() {}"
+    },
+    {
+      "q": "What is the output of the following code: System.out.println(5 + 5 + \"Hello\");?",
+      "options": [
+        "10Hello",
+        "Hello10",
+        "Error",
+        "None of the above"
+      ],
+      "answer": "10Hello"
+    },
+    {
+      "q": "Which of the following is a valid way to declare a variable in Java?",
+      "options": [
+        "int x = 10;",
+        "x int = 10;",
+        "int = 10;",
+        "None of the above"
+      ],
+      "answer": "int x = 10;"
+    },
+    {
+      "q": "What is the output of the following code: System.out.println(5 + 5 + 5 + 5);?",
+      "options": [
+        "20",
+        "15",
+        "Error",
+        "None of the above"
+      ],
+      "answer": "20"
+    },
+    {
+      "q": "Which of the following is a valid way to declare a boolean variable in Java?",
+      "options": [
+        "boolean isTrue = true;",
+        "bool isTrue = true;",
+        "boolean isTrue = 1;",
+        "None of the above"
+      ],
+      "answer": "boolean isTrue = true;"
+    },
+    {
+      "q": "What is the output of the following code: System.out.println(\"Hello\".toLowerCase());?",
+      "options": [
+        "hello",
+        "Hello",
+        "Error",
+        "None of the above"
+      ],
+      "answer": "hello"
+    },
+    {
+      "q": "Which of the following is a valid way to declare a float variable in Java?",
+      "options": [
+        "float x = 10.5f;",
+        "float x = 10.5;",
+        "float x = 10;",
+        "None of the above"
+      ],
+      "answer": "float x = 10.5f;"
+    },
+    {
+      "q": "What is the output of the following code: System.out.println(5 + 5 + 5 + \"5\");?",
+      "options": [
+        "555",
+        "15",
+        "Error",
+        "None of the above"
+      ],
+      "answer": "555"
+    },
+    {
+      "q": "Which of the following is a valid way to declare a double variable in Java?",
+      "options": [
+        "double x = 10.5;",
+        "double x = 10;",
+        "double x = 10.5d;",
+        "All of the above"
+      
+      ],
+      "answer":"double x = 10.5;"
+    }
+  ],
+  "python": [
+    {
+      "q": "Which keyword is used to define a function in Python?",
+      "options": [
+        "function",
+        "def",
+        "fun",
+        "lambda"
+      ],
+      "answer": "def"
+    },
+    {
+      "q": "Which of the following is not a Python data type?",
+      "options": [
+        "list",
+        "set",
+        "map",
+        "tuple"
+      ],
+      "answer": "map"
+    },
+    {
+      "q": "Python Question 3: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "Python Question 4: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "Python Question 5: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "Python Question 6: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "Python Question 7: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "Python Question 8: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "Python Question 9: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "Python Question 10: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "Python Question 11: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "Python Question 12: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "Python Question 13: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "Python Question 14: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "Python Question 15: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "Python Question 16: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "Python Question 17: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "Python Question 18: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "Python Question 19: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "Python Question 20: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "Python Question 21: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "Python Question 22: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "Python Question 23: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "Python Question 24: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "Python Question 25: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "Python Question 26: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "Python Question 27: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "Python Question 28: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "Python Question 29: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "Python Question 30: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "Python Question 31: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "Python Question 32: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "Python Question 33: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "Python Question 34: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "Python Question 35: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "Python Question 36: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "Python Question 37: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "Python Question 38: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "Python Question 39: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "Python Question 40: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "Python Question 41: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "Python Question 42: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "Python Question 43: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "Python Question 44: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "Python Question 45: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "Python Question 46: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "Python Question 47: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "Python Question 48: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "Python Question 49: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "Python Question 50: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "Python Question 51: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "Python Question 52: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "Python Question 53: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "Python Question 54: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "Python Question 55: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "Python Question 56: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "Python Question 57: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "Python Question 58: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "Python Question 59: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "Python Question 60: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "Python Question 61: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "Python Question 62: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "Python Question 63: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "Python Question 64: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "Python Question 65: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "Python Question 66: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "Python Question 67: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "Python Question 68: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "Python Question 69: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "Python Question 70: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "Python Question 71: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "Python Question 72: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "Python Question 73: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "Python Question 74: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "Python Question 75: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "Python Question 76: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "Python Question 77: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "Python Question 78: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "Python Question 79: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "Python Question 80: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "Python Question 81: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "Python Question 82: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "Python Question 83: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "Python Question 84: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "Python Question 85: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "Python Question 86: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "Python Question 87: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "Python Question 88: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "Python Question 89: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "Python Question 90: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "Python Question 91: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "Python Question 92: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "Python Question 93: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "Python Question 94: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "Python Question 95: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "Python Question 96: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "Python Question 97: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "Python Question 98: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "Python Question 99: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "Python Question 100: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    }
+  ],
+  "htmlcss": [
+    {
+      "q": "Which HTML tag is used to define a hyperlink?",
+      "options": [
+        "<link>",
+        "<a>",
+        "<href>",
+        "<p>"
+      ],
+      "answer": "<a>"
+    },
+    {
+      "q": "Which CSS property controls the text size?",
+      "options": [
+        "font-size",
+        "text-style",
+        "font-weight",
+        "size"
+      ],
+      "answer": "font-size"
+    },
+    {
+      "q": "HTML/CSS Question 3: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "HTML/CSS Question 4: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "HTML/CSS Question 5: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "HTML/CSS Question 6: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "HTML/CSS Question 7: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "HTML/CSS Question 8: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "HTML/CSS Question 9: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "HTML/CSS Question 10: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "HTML/CSS Question 11: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "HTML/CSS Question 12: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "HTML/CSS Question 13: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "HTML/CSS Question 14: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "HTML/CSS Question 15: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "HTML/CSS Question 16: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "HTML/CSS Question 17: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "HTML/CSS Question 18: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "HTML/CSS Question 19: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "HTML/CSS Question 20: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "HTML/CSS Question 21: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "HTML/CSS Question 22: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "HTML/CSS Question 23: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "HTML/CSS Question 24: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "HTML/CSS Question 25: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "HTML/CSS Question 26: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "HTML/CSS Question 27: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "HTML/CSS Question 28: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "HTML/CSS Question 29: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "HTML/CSS Question 30: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "HTML/CSS Question 31: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "HTML/CSS Question 32: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "HTML/CSS Question 33: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "HTML/CSS Question 34: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "HTML/CSS Question 35: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "HTML/CSS Question 36: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "HTML/CSS Question 37: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "HTML/CSS Question 38: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "HTML/CSS Question 39: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "HTML/CSS Question 40: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "HTML/CSS Question 41: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "HTML/CSS Question 42: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "HTML/CSS Question 43: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "HTML/CSS Question 44: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "HTML/CSS Question 45: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "HTML/CSS Question 46: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "HTML/CSS Question 47: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "HTML/CSS Question 48: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "HTML/CSS Question 49: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "HTML/CSS Question 50: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "HTML/CSS Question 51: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "HTML/CSS Question 52: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "HTML/CSS Question 53: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "HTML/CSS Question 54: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "HTML/CSS Question 55: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "HTML/CSS Question 56: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "HTML/CSS Question 57: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "HTML/CSS Question 58: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "HTML/CSS Question 59: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "HTML/CSS Question 60: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "HTML/CSS Question 61: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "HTML/CSS Question 62: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "HTML/CSS Question 63: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "HTML/CSS Question 64: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "HTML/CSS Question 65: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "HTML/CSS Question 66: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "HTML/CSS Question 67: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "HTML/CSS Question 68: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "HTML/CSS Question 69: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "HTML/CSS Question 70: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "HTML/CSS Question 71: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "HTML/CSS Question 72: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "HTML/CSS Question 73: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "HTML/CSS Question 74: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "HTML/CSS Question 75: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "HTML/CSS Question 76: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "HTML/CSS Question 77: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "HTML/CSS Question 78: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "HTML/CSS Question 79: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "HTML/CSS Question 80: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "HTML/CSS Question 81: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "HTML/CSS Question 82: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "HTML/CSS Question 83: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "HTML/CSS Question 84: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "HTML/CSS Question 85: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "HTML/CSS Question 86: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "HTML/CSS Question 87: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "HTML/CSS Question 88: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "HTML/CSS Question 89: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "HTML/CSS Question 90: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "HTML/CSS Question 91: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "HTML/CSS Question 92: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "HTML/CSS Question 93: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "HTML/CSS Question 94: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "HTML/CSS Question 95: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "HTML/CSS Question 96: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "HTML/CSS Question 97: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "HTML/CSS Question 98: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "HTML/CSS Question 99: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "HTML/CSS Question 100: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    }
+  ],
+  "javascript": [
+    {
+      "q": "Which symbol is used for comments in JavaScript?",
+      "options": [
+        "//",
+        "#",
+        "<!--",
+        "/* */"
+      ],
+      "answer": "//"
+    },
+    {
+      "q": "Which method is used to print something in console?",
+      "options": [
+        "console.print()",
+        "console.log()",
+        "log.console()",
+        "print.console()"
+      ],
+      "answer": "console.log()"
+    },
+    {
+      "q": "JavaScript Question 3: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "JavaScript Question 4: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "JavaScript Question 5: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "JavaScript Question 6: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "JavaScript Question 7: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "JavaScript Question 8: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "JavaScript Question 9: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "JavaScript Question 10: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "JavaScript Question 11: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "JavaScript Question 12: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "JavaScript Question 13: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "JavaScript Question 14: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "JavaScript Question 15: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "JavaScript Question 16: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "JavaScript Question 17: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "JavaScript Question 18: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "JavaScript Question 19: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "JavaScript Question 20: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "JavaScript Question 21: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "JavaScript Question 22: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "JavaScript Question 23: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "JavaScript Question 24: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "JavaScript Question 25: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "JavaScript Question 26: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "JavaScript Question 27: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "JavaScript Question 28: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "JavaScript Question 29: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "JavaScript Question 30: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "JavaScript Question 31: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "JavaScript Question 32: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "JavaScript Question 33: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "JavaScript Question 34: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "JavaScript Question 35: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "JavaScript Question 36: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "JavaScript Question 37: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "JavaScript Question 38: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "JavaScript Question 39: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "JavaScript Question 40: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "JavaScript Question 41: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "JavaScript Question 42: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "JavaScript Question 43: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "JavaScript Question 44: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "JavaScript Question 45: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "JavaScript Question 46: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "JavaScript Question 47: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "JavaScript Question 48: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "JavaScript Question 49: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "JavaScript Question 50: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "JavaScript Question 51: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "JavaScript Question 52: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "JavaScript Question 53: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "JavaScript Question 54: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "JavaScript Question 55: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "JavaScript Question 56: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "JavaScript Question 57: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "JavaScript Question 58: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "JavaScript Question 59: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "JavaScript Question 60: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "JavaScript Question 61: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "JavaScript Question 62: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "JavaScript Question 63: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "JavaScript Question 64: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "JavaScript Question 65: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "JavaScript Question 66: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "JavaScript Question 67: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "JavaScript Question 68: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "JavaScript Question 69: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "JavaScript Question 70: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "JavaScript Question 71: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "JavaScript Question 72: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "JavaScript Question 73: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "JavaScript Question 74: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "JavaScript Question 75: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "JavaScript Question 76: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "JavaScript Question 77: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "JavaScript Question 78: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "JavaScript Question 79: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "JavaScript Question 80: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "JavaScript Question 81: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "JavaScript Question 82: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "JavaScript Question 83: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "JavaScript Question 84: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "JavaScript Question 85: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "JavaScript Question 86: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "JavaScript Question 87: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "JavaScript Question 88: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "JavaScript Question 89: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "JavaScript Question 90: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "JavaScript Question 91: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "JavaScript Question 92: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "JavaScript Question 93: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "JavaScript Question 94: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "JavaScript Question 95: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "JavaScript Question 96: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "JavaScript Question 97: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "JavaScript Question 98: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "JavaScript Question 99: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    },
+    {
+      "q": "JavaScript Question 100: Sample realistic concept check?",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Option D"
+      ],
+      "answer": "Option A"
+    }
+  ]
+}

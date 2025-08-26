@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notes with Login + PDF Viewer</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Disable right-click to prevent saving PDF */
+    iframe {
+      pointer-events: auto;
+    }
+    body {
+      user-select: none; /* text copy disable */
+    }
+  </style>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+
+  <!-- Login Section -->
+  <div id="loginBox" class="bg-white shadow-2xl rounded-2xl p-8 w-full max-w-md transform transition-all hover:scale-105 duration-300">
+    <h2 class="text-3xl font-extrabold text-center text-indigo-600 mb-6">Login to Practice</h2>
+    
+    <input id="email" type="email" placeholder="📧 Email" class="w-full border rounded-xl p-3 mb-4 focus:ring-2 focus:ring-indigo-400 outline-none">
+    <input id="password" type="password" placeholder="🔑 Password" class="w-full border rounded-xl p-3 mb-4 focus:ring-2 focus:ring-indigo-400 outline-none">
+    
+    <button onclick="login()" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-3 rounded-xl font-semibold shadow-md transition-all">🚀 Login</button>
+    <button onclick="backto()" class="w-full bg-gray-700 hover:bg-gray-800 text-white py-3 rounded-xl mt-3 font-semibold shadow-md transition-all">🏠 Back To Home</button>
+    
+    <p id="errorMsg" class="text-red-600 mt-4 text-center font-semibold"></p>
+  </div>
+
+  <!-- Notes Section (for Students after login) -->
+  <div id="notesSection" class="hidden w-full max-w-4xl bg-white p-8 rounded-2xl shadow-lg">
+    <div class="flex justify-between items-center mb-4">
+      <h2 class="text-2xl font-bold text-center">My Notes</h2>
+      <button onclick="logout()" class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition">Logout</button>
+    </div>
+
+    <!-- Notes Box -->
+    <textarea id="noteInput" placeholder="Write your note here..."
+      class="w-full h-32 border rounded-lg p-3 mb-4 focus:outline-none focus:ring-2 focus:ring-indigo-500"></textarea>
+    <button onclick="saveNote()" 
+      class="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition">Save Note</button>
+    <div id="notesList" class="mt-6"></div>
+
+    <!-- PDF Viewer (Admin Upload, Student Only View) -->
+    <h3 class="text-xl font-semibold mt-6 mb-2">Study Material (PDF)</h3>
+    <iframe id="pdfViewer" src="uploads/sample.pdf#toolbar=0&navpanes=0&scrollbar=0"
+      class="w-full h-96 border rounded-lg shadow-md"></iframe>
+    <p class="text-gray-500 text-sm mt-2">📌 PDF is view-only. Download/Print disabled.</p>
+  </div>
+
+  <script>
+    let currentUser = null;
+
+    // ✅ Login using pract.json
+    async function login() {
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value.trim();
+
+      try {
+        const resUser = await fetch("pract.json");
+        const dataUser = await resUser.json();
+
+        const user = dataUser.users.find(u => u.email === email && u.password === password);
+
+        if (user) {
+          currentUser = email;
+          document.getElementById("loginBox").classList.add("hidden");
+          document.getElementById("notesSection").classList.remove("hidden");
+          showNotes();
+        } else {
+          document.getElementById("errorMsg").innerText = "❌ Invalid Email or Password";
+        }
+      } catch (err) {
+        document.getElementById("errorMsg").innerText = "⚠️ Error loading data";
+      }
+    }
+
+    // ✅ Logout
+    function logout() {
+      document.getElementById("notesSection").classList.add("hidden");
+      document.getElementById("loginBox").classList.remove("hidden");
+      document.getElementById("email").value = "";
+      document.getElementById("password").value = "";
+      document.getElementById("errorMsg").innerText = "";
+      currentUser = null;
+    }
+
+    function backto(){
+      document.location.href="index.html"
+    }
+
+    // ✅ Save notes (per user)
+    function saveNote() {
+      if (!currentUser) return;
+      let noteText = document.getElementById("noteInput").value;
+      if (noteText.trim() === "") return;
+
+      let notes = JSON.parse(localStorage.getItem("notes_" + currentUser)) || [];
+      notes.push(noteText);
+      localStorage.setItem("notes_" + currentUser, JSON.stringify(notes));
+      document.getElementById("noteInput").value = "";
+      showNotes();
+    }
+
+    function showNotes() {
+      if (!currentUser) return;
+      let notes = JSON.parse(localStorage.getItem("notes_" + currentUser)) || [];
+      let notesList = document.getElementById("notesList");
+      notesList.innerHTML = "";
+      notes.forEach((note, index) => {
+        notesList.innerHTML += `
+          <div class="p-3 border rounded-lg mb-2 flex justify-between">
+            <span>${note}</span>
+            <button onclick="deleteNote(${index})" 
+              class="text-red-600 hover:text-red-800">Delete</button>
+          </div>`;
+      });
+    }
+
+    function deleteNote(index) {
+      if (!currentUser) return;
+      let notes = JSON.parse(localStorage.getItem("notes_" + currentUser)) || [];
+      notes.splice(index, 1);
+      localStorage.setItem("notes_" + currentUser, JSON.stringify(notes));
+      showNotes();
+    }
+
+    // ❌ Disable Right-Click (Extra Security)
+    document.addEventListener("contextmenu", e => e.preventDefault());
+  </script>
+</body>
+</html>

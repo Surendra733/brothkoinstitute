@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz App - One Question at a Time</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      color: #333;
+    }
+    .quiz-container {
+      background: #fff;
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0px 6px 18px rgba(0,0,0,0.15);
+      width: 600px;
+      max-width: 95%;
+      text-align: center;
+    }
+    h2 {
+      margin-bottom: 20px;
+      font-size: 1.4rem;
+      color: #444;
+    }
+    .options {
+      margin: 15px 0;
+      text-align: left;
+    }
+    .options button {
+      display: block;
+      width: 100%;
+      margin: 8px 0;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      background: #f9f9f9;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: all 0.3s;
+    }
+    .options button:hover {
+      background: #e9e9e9;
+    }
+    .options button.correct {
+      background: #4caf50 !important;
+      color: white;
+    }
+    .options button.wrong {
+      background: #f44336 !important;
+      color: white;
+    }
+    .navigation {
+      margin-top: 20px;
+      display: flex;
+      justify-content: space-between;
+    }
+    .navigation button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      background: #007bff;
+      color: white;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background 0.3s;
+    }
+    .navigation button:hover {
+      background: #0056b3;
+    }
+    .navigation button:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+    }
+    .result-container {
+      text-align: left;
+    }
+    .result-container h2 {
+      color: #222;
+      margin-bottom: 15px;
+    }
+    .result-item {
+      margin: 10px 0;
+      padding: 10px;
+      border-radius: 8px;
+    }
+    .result-item.correct {
+      background: #e8f5e9;
+      border-left: 6px solid #4caf50;
+    }
+    .result-item.wrong {
+      background: #ffebee;
+      border-left: 6px solid #f44336;
+    }
+  </style>
+</head>
+<body>
+
+<div class="quiz-container" id="quizBox">
+  <h2 id="question">Loading...</h2>
+  <div id="options" class="options"></div>
+  <div class="navigation">
+    <button id="prevBtn" onclick="prevQuestion()">Previous</button>
+    <button id="nextBtn" onclick="nextQuestion()">Next</button>
+  </div>
+</div>
+
+<div class="quiz-container hidden" id="resultBox">
+  <div class="result-container">
+    <h2>Your Results</h2>
+    <p id="score"></p>
+    <div id="resultList"></div>
+  </div>
+</div>
+
+<script>
+  let questions = [];
+  let currentQuestionIndex = 0;
+  let answers = []; // store user answers
+
+  // Load questions from JSON file
+  fetch("quiz.json")
+    .then(res => res.json())
+    .then(data => {
+      questions = data;
+      showQuestion();
+    });
+
+  function showQuestion() {
+    let q = questions[currentQuestionIndex];
+    document.getElementById("question").innerText = q.q;
+
+    let optionsDiv = document.getElementById("options");
+    optionsDiv.innerHTML = "";
+    q.options.forEach(opt => {
+      let btn = document.createElement("button");
+      btn.innerText = opt;
+
+      // highlight if already answered
+      if (answers[currentQuestionIndex]) {
+        if (opt === q.answer) btn.classList.add("correct");
+        else if (opt === answers[currentQuestionIndex]) btn.classList.add("wrong");
+      }
+
+      btn.onclick = () => selectAnswer(opt, q.answer, btn);
+      optionsDiv.appendChild(btn);
+    });
+
+    document.getElementById("prevBtn").disabled = (currentQuestionIndex === 0);
+    document.getElementById("nextBtn").innerText = 
+      (currentQuestionIndex === questions.length - 1) ? "Finish" : "Next";
+  }
+
+  function selectAnswer(selected, correct, btn) {
+    answers[currentQuestionIndex] = selected;
+    showQuestion(); // re-render to highlight answers
+  }
+
+  function nextQuestion() {
+    if (currentQuestionIndex < questions.length - 1) {
+      currentQuestionIndex++;
+      showQuestion();
+    } else {
+      showResults();
+    }
+  }
+
+  function prevQuestion() {
+    if (currentQuestionIndex > 0) {
+      currentQuestionIndex--;
+      showQuestion();
+    }
+  }
+
+  function showResults() {
+    document.getElementById("quizBox").classList.add("hidden");
+    document.getElementById("resultBox").classList.remove("hidden");
+
+    let correctCount = 0;
+    let resultList = document.getElementById("resultList");
+    resultList.innerHTML = "";
+
+    questions.forEach((q, i) => {
+      let userAnswer = answers[i];
+      let isCorrect = userAnswer === q.answer;
+      if (isCorrect) correctCount++;
+
+      let div = document.createElement("div");
+      div.classList.add("result-item", isCorrect ? "correct" : "wrong");
+      div.innerHTML = `
+        <p><strong>Q${i+1}:</strong> ${q.q}</p>
+        <p>Your Answer: ${userAnswer || "No Answer"}</p>
+        <p>Correct Answer: ${q.answer}</p>
+      `;
+      resultList.appendChild(div);
+    });
+
+    document.getElementById("score").innerText = 
+      `✅ You got ${correctCount} out of ${questions.length} correct!`;
+  }
+</script>
+
+</body>
+</html>

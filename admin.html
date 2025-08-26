@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admin Panel - Upload Notes</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+
+  <div class="bg-white shadow-2xl rounded-xl p-8 w-full max-w-lg">
+    <h2 class="text-2xl font-bold text-center mb-4">📂 Admin Panel - Upload PDFs</h2>
+
+    <!-- Admin Login -->
+    <div id="adminLogin">
+      <input id="adminEmail" type="email" placeholder="Admin Email" class="w-full border p-2 rounded mb-3">
+      <input id="adminPass" type="password" placeholder="Password" class="w-full border p-2 rounded mb-3">
+      <button onclick="adminLogin()" class="w-full bg-blue-600 text-white p-2 rounded">Login</button>
+      <p id="adminError" class="text-red-500 mt-2 hidden">Invalid admin credentials</p>
+    </div>
+
+    <!-- Upload Section -->
+    <div id="uploadSection" class="hidden">
+      <h3 class="text-lg font-semibold mb-2">➕ Add PDF</h3>
+      <input id="pdfTitle" type="text" placeholder="Enter PDF Title" class="w-full border p-2 rounded mb-3">
+
+      <!-- ✅ File Upload -->
+      <input id="pdfFile" type="file" accept="application/pdf" class="w-full border p-2 rounded mb-3">
+
+      <button onclick="addPDF()" class="w-full bg-green-600 text-white p-2 rounded mb-3">Add PDF</button>
+      <button onclick="downloadJSON()" class="w-full bg-purple-600 text-white p-2 rounded">💾 Download file.json</button>
+
+      <h3 class="text-lg font-semibold mt-4">📑 Current PDFs</h3>
+      <ul id="pdfList" class="list-disc ml-6 mt-2"></ul>
+    </div>
+  </div>
+
+  <script>
+    let pdfData = [];
+
+    // ✅ Admin Login (Static credentials in admin.json)
+    async function adminLogin() {
+      const email = document.getElementById("adminEmail").value;
+      const pass = document.getElementById("adminPass").value;
+
+      const res = await fetch("admin.json");
+      const admins = await res.json();
+
+      const validAdmin = admins.find(a => a.email === email && a.password === pass);
+
+      if (validAdmin) {
+        document.getElementById("adminLogin").classList.add("hidden");
+        document.getElementById("uploadSection").classList.remove("hidden");
+        loadExisting();
+      } else {
+        document.getElementById("adminError").classList.remove("hidden");
+      }
+    }
+
+    // ✅ Load existing PDFs
+    async function loadExisting() {
+      try {
+        const res = await fetch("file.json");
+        pdfData = await res.json();
+        renderList();
+      } catch {
+        pdfData = [];
+      }
+    }
+
+    // ✅ Add PDF entry (from device file)
+    function addPDF() {
+      const title = document.getElementById("pdfTitle").value.trim();
+      const fileInput = document.getElementById("pdfFile");
+
+      if (title === "" || fileInput.files.length === 0) return;
+
+      const file = fileInput.files[0];
+      const fakePath = "uploads/" + file.name; // 👈 mimic server upload path
+
+      pdfData.push({ title, file: fakePath });
+      renderList();
+
+      document.getElementById("pdfTitle").value = "";
+      fileInput.value = "";
+    }
+
+    // ✅ Render PDF List
+    function renderList() {
+      const list = document.getElementById("pdfList");
+      list.innerHTML = "";
+      pdfData.forEach((pdf, i) => {
+        list.innerHTML += `
+          <li>${pdf.title} - <span class="text-gray-500">${pdf.file}</span>
+          <button onclick="deletePDF(${i})" class="text-red-600 ml-2">❌</button></li>`;
+      });
+    }
+
+    // ✅ Delete PDF
+    function deletePDF(index) {
+      pdfData.splice(index, 1);
+      renderList();
+    }
+
+    // ✅ Export file.json
+    function downloadJSON() {
+      const blob = new Blob([JSON.stringify(pdfData, null, 2)], { type: "application/json" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "file.json";
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+  </script>
+</body>
+</html>

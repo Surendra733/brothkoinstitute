@@ -1,0 +1,152 @@
+[
+  {
+    "q": "Which keyword is used to inherit a class in Java?",
+    "options": ["this", "super", "extends", "implements"],
+    "answer": "extends"
+  },
+  {
+    "q": "Which keyword is used to define a function in Python?",
+    "options": ["function", "def", "fun", "lambda"],
+    "answer": "def"
+  },
+  {
+      "q": "Which method is the entry point of a Java program?",
+      "options": [
+        "start()",
+        "init()",
+        "main()",
+        "run()"
+      ],
+      "answer": "main()"
+    },
+    {
+      "q": "What is the default value of a boolean variable in Java?",
+      "options": [
+        "true",
+        "false",
+        "null",
+        "0"
+      ],
+      "answer": "false"
+    },
+    {
+      "q": "Which of the following is not a Java keyword?",
+      "options": [
+        "class",
+        "public",
+        "void",
+        "main"
+      ],
+      "answer": "main"
+    },
+    {
+      "q": "What is the size of an int variable in Java?",
+      "options": [
+        "8 bits",
+        "16 bits",
+        "32 bits",
+        "64 bits"
+      ],
+      "answer": "32 bits"
+    },
+    {
+      "q": "Which of the following is a valid declaration of a char?",
+      "options": [
+        "char c = 'c';",
+        "char c = 'cc';",
+        "char c = \"c\";",
+        "char c = c;"
+      ],
+      "answer": "char c = 'c';"
+    },
+    {
+      "q": "What is the output of the following code: System.out.println(1 + 2 + '3');?",
+      "options": [
+        "33",
+        "6",
+        "123",
+        "Error"
+      ],
+      "answer": "33"
+    },
+    {
+      "q": "Which of the following is a valid way to create an array in Java?",
+      "options": [
+        "int arr[] = new int[5];",
+        "int arr = new int[5];",
+        "int arr[] = int[5];",
+        "int arr = int[5];"
+      ],
+      "answer": "int arr[] = new int[5];"
+    },
+    {
+      "q": "What is the purpose of the 'final' keyword in Java?",
+      "options": [
+        "To declare a constant variable",
+        "To prevent method overriding",
+        "To prevent inheritance",
+        "All of the above"
+      ],
+      "answer": "All of the above"
+    },
+    {
+      "q": "Which of the following is used to handle exceptions in Java?",
+      "options": [
+        "try-catch",
+        "throw",
+        "throws",
+        "All of the above"
+      ],
+      "answer": "All of the above"
+    },
+    {
+      "q": "What is the output of the following code: System.out.println(10 + 20 + \"30\");?",
+      "options": [
+        "30",
+        "1020",
+        "1030",
+        "Error"
+      ],
+      "answer": "1030"
+    },
+    {
+      "q": "Which of the following is not a valid access modifier in Java?",
+      "options": [
+        "public",
+        "private",
+        "protected",
+        "internal"
+      ],
+      "answer": "internal"
+    },
+    {
+      "q": "What is the default value of an integer variable in Java?",
+      "options": [
+        "0",
+        "1",
+        "null",
+        "undefined"
+      ],
+      "answer": "0"
+    },
+    {
+      "q": "Which of the following statements is true about Java?",
+      "options": [
+        "Java is platform-dependent.",
+        "Java is a compiled language.",
+        "Java supports multiple inheritance.",
+        "Java is a high-level programming language."
+      ],
+      "answer": "Java is a high-level programming language."
+    },
+    {
+      "q": "What is the purpose of the 'static' keyword in Java?",
+      "options": [
+        "To declare a class variable",
+        "To declare a method that belongs to the class",
+        "To prevent method overriding",
+        "Both A and B"
+      ],
+      "answer": "Both A and B"
+    }
+]
