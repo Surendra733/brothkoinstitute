@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeDocs - Programming Language Documentation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --python-color: #3776AB;
+            --web-color: #E44D26;
+            --java-color: #ED8B00;
+            --bg-dark: #1a1a2e;
+            --bg-light: #f8f9fa;
+            --text-dark: #333;
+            --text-light: #f8f9fa;
+            --card-bg: #ffffff;
+            --shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: var(--text-dark);
+            line-height: 1.6;
+            min-height: 100vh;
+            padding-bottom: 40px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            padding: 40px 0;
+            color: white;
+        }
+        
+        header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        header p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+        
+        .tab {
+            padding: 15px 30px;
+            margin: 0 10px 10px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            color: white;
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid transparent;
+        }
+        
+        .tab:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+        
+        .tab.active {
+            border: 2px solid white;
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+        
+        .tab.python.active {
+            background: var(--python-color);
+        }
+        
+        .tab.web.active {
+            background: var(--web-color);
+        }
+        
+        .tab.java.active {
+            background: var(--java-color);
+        }
+        
+        .content {
+            display: none;
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            margin-bottom: 30px;
+        }
+        
+        .content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .content-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #eee;
+        }
+        
+        .content-header i {
+            font-size: 2.5rem;
+            margin-right: 15px;
+        }
+        
+        .content-header h2 {
+            font-size: 2rem;
+        }
+        
+        .python-content .content-header i {
+            color: var(--python-color);
+        }
+        
+        .web-content .content-header i {
+            color: var(--web-color);
+        }
+        
+        .java-content .content-header i {
+            color: var(--java-color);
+        }
+        
+        .code-container {
+            background: #2d2d3a;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 20px 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .code-header {
+            background: #1a1a24;
+            padding: 12px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #fff;
+        }
+        
+        .code-header span {
+            font-weight: 600;
+        }
+        
+        .copy-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .copy-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .code-content {
+            padding: 20px;
+            color: #f8f8f2;
+            font-family: 'Fira Code', monospace;
+            overflow-x: auto;
+            line-height: 1.5;
+        }
+        
+        .code-content pre {
+            margin: 0;
+        }
+        
+        .comment { color: #6272a4; }
+        .keyword { color: #ff79c6; }
+        .function { color: #50fa7b; }
+        .string { color: #f1fa8c; }
+        .number { color: #bd93f9; }
+        .operator { color: #ff79c6; }
+        .class-name { color: #8be9fd; }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .feature {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+        
+        .feature:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature h3 {
+            margin-bottom: 10px;
+            color: var(--python-color);
+            display: flex;
+            align-items: center;
+        }
+        
+        .feature h3 i {
+            margin-right: 10px;
+        }
+        
+        .web-content .feature h3 {
+            color: var(--web-color);
+        }
+        
+        .java-content .feature h3 {
+            color: var(--java-color);
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            color: white;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .tabs {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .tab {
+                width: 80%;
+                margin-bottom: 10px;
+            }
+            
+            .features {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>CodeDocs</h1>
+            <p>Comprehensive documentation and examples for popular programming languages</p>
+        </header>
+        
+        <div class="tabs">
+            <div class="tab python active" data-target="python-content">
+                <i class="fab fa-python"></i> Python
+            </div>
+            <div class="tab web" data-target="web-content">
+                <i class="fab fa-html5"></i> HTML/CSS/JS
+            </div>
+            <div class="tab java" data-target="java-content">
+                <i class="fab fa-java"></i> Java
+            </div>
+        </div>
+        
+        <div id="python-content" class="content python-content active">
+            <div class="content-header">
+                <i class="fab fa-python"></i>
+                <h2>Python Documentation</h2>
+            </div>
+            
+            <p>Python is an interpreted, high-level, general-purpose programming language. Its design philosophy emphasizes code readability with its notable use of significant whitespace.</p>
+            
+            <div class="code-container">
+                <div class="code-header">
+                    <span>example.py</span>
+                    <button class="copy-btn">Copy Code</button>
+                </div>
+                <div class="code-content">
+                    <pre><code><span class="comment"># Python program to display Fibonacci series</span>
+<span class="keyword">def</span> <span class="function">fibonacci</span>(n):
+    <span class="comment"># First two terms</span>
+    a, b = <span class="number">0</span>, <span class="number">1</span>
+    count = <span class="number">0</span>
+    
+    <span class="comment"># Check if the number of terms is valid</span>
+    <span class="keyword">if</span> n <= <span class="number">0</span>:
+        <span class="keyword">print</span>(<span class="string">"Please enter a positive integer"</span>)
+    <span class="keyword">elif</span> n == <span class="number">1</span>:
+        <span class="keyword">print</span>(<span class="string">"Fibonacci sequence up to"</span>, n, <span class="string">":"</span>)
+        <span class="keyword">print</span>(a)
+    <span class="keyword">else</span>:
+        <span class="keyword">print</span>(<span class="string">"Fibonacci sequence:"</span>)
+        <span class="keyword">while</span> count < n:
+            <span class="keyword">print</span>(a, end=<span class="string">' '</span>)
+            nth = a + b
+            a = b
+            b = nth
+            count += <span class="number">1</span>
+
+<span class="comment"># Call the function</span>
+fibonacci(<span class="number">10</span>)</code></pre>
+                </div>
+            </div>
+            
+            <div class="features">
+                <div class="feature">
+                    <h3><i class="fas fa-code"></i> Simple Syntax</h3>
+                    <p>Python has a straightforward syntax that emphasizes readability and reduces the cost of program maintenance.</p>
+                </div>
+                <div class="feature">
+                    <h3><i class="fas fa-box-open"></i> Extensive Libraries</h3>
+                    <p>Python's standard library is large and comprehensive, offering modules for everything from web development to data science.</p>
+                </div>
+                <div class="feature">
+                    <h3><i class="fas fa-users"></i> Community Support</h3>
+                    <p>Python has a large and active community that contributes to an extensive ecosystem of frameworks and tools.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div id="web-content" class="content web-content">
+            <div class="content-header">
+                <i class="fab fa-html5"></i>
+                <h2>HTML, CSS & JavaScript Documentation</h2>
+            </div>
+            
+            <p>HTML, CSS, and JavaScript are the core technologies of web content. HTML provides the structure, CSS the styling, and JavaScript the behavior.</p>
+            
+            <div class="code-container">
+                <div class="code-header">
+                    <span>example.html</span>
+                    <button class="copy-btn">Copy Code</button>
+                </div>
+                <div class="code-content">
+                    <pre><code><span class="comment">&lt;!-- Simple HTML page with CSS and JavaScript --&gt;</span>
+<span class="keyword">&lt;!DOCTYPE</span> html<span class="keyword">&gt;</span>
+<span class="keyword">&lt;html</span> lang=<span class="string">"en"</span><span class="keyword">&gt;</span>
+<span class="keyword">&lt;head&gt;</span>
+    <span class="keyword">&lt;meta</span> charset=<span class="string">"UTF-8"</span><span class="keyword">&gt;</span>
+    <span class="keyword">&lt;meta</span> name=<span class="string">"viewport"</span> content=<span class="string">"width=device-width, initial-scale=1.0"</span><span class="keyword">&gt;</span>
+    <span class="keyword">&lt;title&gt;</span>Document<span class="keyword">&lt;/title&gt;</span>
+    <span class="keyword">&lt;style&gt;</span>
+        <span class="class-name">.container</span> {
+            <span class="property">max-width</span>: <span class="number">1200</span><span class="unit">px</span>;
+            <span class="property">margin</span>: <span class="number">0</span> auto;
+            <span class="property">padding</span>: <span class="number">20</span><span class="unit">px</span>;
+        }
+        
+        <span class="class-name">.btn</span> {
+            <span class="property">background</span>: <span class="color">#4CAF50</span>;
+            <span class="property">color</span>: white;
+            <span class="property">padding</span>: <span class="number">10</span><span class="unit">px</span> <span class="number">20</span><span class="unit">px</span>;
+            <span class="property">border</span>: none;
+            <span class="property">border-radius</span>: <span class="number">4</span><span class="unit">px</span>;
+            <span class="property">cursor</span>: pointer;
+        }
+    <span class="keyword">&lt;/style&gt;</span>
+<span class="keyword">&lt;/head&gt;</span>
+<span class="keyword">&lt;body&gt;</span>
+    <span class="keyword">&lt;div</span> class=<span class="string">"container"</span><span class="keyword">&gt;</span>
+        <span class="keyword">&lt;h1&gt;</span>Hello World!<span class="keyword">&lt;/h1&gt;</span>
+        <span class="keyword">&lt;button</span> class=<span class="string">"btn"</span> id=<span class="string">"myBtn"</span><span class="keyword">&gt;</span>Click Me<span class="keyword">&lt;/button&gt;</span>
+    <span class="keyword">&lt;/div&gt;</span>
+    
+    <span class="keyword">&lt;script&gt;</span>
+        <span class="comment">// JavaScript code</span>
+        <span class="function">document</span>.<span class="function">getElementById</span>(<span class="string">'myBtn'</span>).<span class="function">addEventListener</span>(<span class="string">'click'</span>, <span class="function">function</span>() {
+            <span class="function">alert</span>(<span class="string">'Button clicked!'</span>);
+        });
+    <span class="keyword">&lt;/script&gt;</span>
+<span class="keyword">&lt;/body&gt;</span>
+<span class="keyword">&lt;/html&gt;</span></code></pre>
+                </div>
+            </div>
+            
+            <div class="features">
+                <div class="feature">
+                    <h3><i class="fas fa-code"></i> HTML Structure</h3>
+                    <p>HTML (HyperText Markup Language) is the standard markup language for documents designed to be displayed in a web browser.</p>
+                </div>
+                <div class="feature">
+                    <h3><i class="fas fa-paint-brush"></i> CSS Styling</h3>
+                    <p>CSS (Cascading Style Sheets) is used to describe the presentation of a document written in HTML or XML.</p>
+                </div>
+                <div class="feature">
+                    <h3><i class="fas fa-cogs"></i> JavaScript Interactivity</h3>
+                    <p>JavaScript is a programming language that enables interactive web pages and is an essential part of web applications.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div id="java-content" class="content java-content">
+            <div class="content-header">
+                <i class="fab fa-java"></i>
+                <h2>Java Documentation</h2>
+            </div>
+            
+            <p>Java is a high-level, class-based, object-oriented programming language that is designed to have as few implementation dependencies as possible.</p>
+            
+            <div class="code-container">
+                <div class="code-header">
+                    <span>Example.java</span>
+                    <button class="copy-btn">Copy Code</button>
+                </div>
+                <div class="code-content">
+                    <pre><code><span class="comment">// Java program to demonstrate a simple class</span>
+<span class="keyword">public</span> <span class="keyword">class</span> <span class="class-name">Student</span> {
+    
+    <span class="comment">// Fields</span>
+    <span class="keyword">private</span> String name;
+    <span class="keyword">private</span> <span class="type">int</span> age;
+    
+    <span class="comment">// Constructor</span>
+    <span class="keyword">public</span> <span class="function">Student</span>(String name, <span class="type">int</span> age) {
+        <span class="keyword">this</span>.name = name;
+        <span class="keyword">this</span>.age = age;
+    }
+    
+    <span class="comment">// Method to display student information</span>
+    <span class="keyword">public</span> <span class="type">void</span> <span class="function">displayInfo</span>() {
+        System.<span class="property">out</span>.<span class="function">println</span>(<span class="string">"Student Name: "</span> + <span class="keyword">this</span>.name);
+        System.<span class="property">out</span>.<span class="function">println</span>(<span class="string">"Student Age: "</span> + <span class="keyword">this</span>.age);
+    }
+    
+    <span class="comment">// Main method</span>
+    <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">void</span> <span class="function">main</span>(String[] args) {
+        <span class="comment">// Create a Student object</span>
+        Student student1 = <span class="keyword">new</span> <span class="function">Student</span>(<span class="string">"John Doe"</span>, <span class="number">20</span>);
+        
+        <span class="comment">// Call display method</span>
+        student1.<span class="function">displayInfo</span>();
+    }
+}</code></pre>
+                </div>
+            </div>
+            
+            <div class="features">
+                <div class="feature">
+                    <h3><i class="fas fa-cube"></i> Object-Oriented</h3>
+                    <p>Java is fundamentally object-oriented, which helps in creating modular programs and reusable code.</p>
+                </div>
+                <div class="feature">
+                    <h3><i class="fas fa-shield-alt"></i> Platform Independent</h3>
+                    <p>Java code is compiled into bytecode that can run on any device with a Java Virtual Machine (JVM).</p>
+                </div>
+                <div class="feature">
+                    <h3><i class="fas fa-tachometer-alt"></i> High Performance</h3>
+                    <p>Java's Just-In-Time (JIT) compiler enables high performance by compiling bytecode to native machine code at runtime.</p>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>CodeDocs &copy; 2025 - All rights reserved</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Tab switching functionality
+            const tabs = document.querySelectorAll('.tab');
+            const contents = document.querySelectorAll('.content');
+            
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    const target = tab.getAttribute('data-target');
+                    
+                    // Remove active class from all tabs and contents
+                    tabs.forEach(t => t.classList.remove('active'));
+                    contents.forEach(c => c.classList.remove('active'));
+                    
+                    // Add active class to current tab and content
+                    tab.classList.add('active');
+                    document.getElementById(target).classList.add('active');
+                });
+            });
+            
+            // Copy button functionality
+            const copyButtons = document.querySelectorAll('.copy-btn');
+            
+            copyButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const codeContent = button.parentElement.nextElementSibling;
+                    const textToCopy = codeContent.textContent;
+                    
+                    navigator.clipboard.writeText(textToCopy).then(() => {
+                        const originalText = button.textContent;
+                        button.textContent = 'Copied!';
+                        
+                        setTimeout(() => {
+                            button.textContent = originalText;
+                        }, 2000);
+                    }).catch(err => {
+                        console.error('Failed to copy: ', err);
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
