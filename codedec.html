@@ -272,7 +272,7 @@
     <div class="container">
         <header>
             <h1>CodeDocs</h1>
-            <p>Comprehensive documentation and examples for popular programming languages</p>
+            <p>Comprehensive documentation for popular programming languages</p>
         </header>
         
         <div class="tabs">
@@ -293,8 +293,324 @@
                 <h2>Python Documentation</h2>
             </div>
             
-            <p>Python is an interpreted, high-level, general-purpose programming language. Its design philosophy emphasizes code readability with its notable use of significant whitespace.</p>
-            
+<div class="python-intro">
+    <h1>🐍 Python</h1>
+    <p>
+        Python is a <b>high-level, interpreted, general-purpose programming language</b>.  
+        It was created by <b>Guido van Rossum</b> in <b>1989</b> and first released in <b>1991</b>.  
+    </p>
+    <p>
+        Python is known for being <b>simple, readable, and powerful</b>.  
+        Interestingly, its name does not come from a snake, but from a British comedy show – 
+        <i>Monty Python’s Flying Circus</i>.
+    </p>
+</div>
+
+<hr>
+<br><br>
+<div class="python-advantages">
+    <h2>✅ Advantages of Python (Why we use Python?)</h2>
+    <ul>
+        <li><b>Simple & Easy to Learn</b> → Syntax is like English.</li>
+        <li><b>Portable</b> → Same code runs on different operating systems.</li>
+        <li><b>Free & Open Source</b> → Anyone can use and modify it.</li>
+        <li><b>Rich Libraries</b> → Ready-made packages for Data Science, AI, Web Development, Games, etc.</li>
+        <li><b>Interpreted</b> → Runs line by line, easy to debug.</li>
+        <li><b>Object-Oriented</b> → Supports Classes & Objects.</li>
+        <li><b>Huge Community Support</b> → Easy to get help worldwide.</li>
+    </ul>
+</div>
+
+<hr>
+<br><br>
+<div class="python-uses">
+    <h2>🔹 Uses of Python</h2>
+    <p>Python is widely used for:</p>
+    <ul>
+        <li>🌐 Web Development (server-side)</li>
+        <li>💻 Software Development</li>
+        <li>📊 Mathematics & Data Analysis</li>
+        <li>⚙️ System Scripting & Automation</li>
+    </ul>
+</div>
+
+<hr>
+<br><br>
+<div class="python-capabilities">
+    <h2>🚀 What can Python do?</h2>
+    <ul>
+        <li>Can be used on a server to create <b>web applications</b>.</li>
+        <li>Can be integrated with software to create <b>workflows</b>.</li>
+        <li>Can connect to <b>database systems</b>, and also read & modify files.</li>
+        <li>Can handle <b>big data</b> and perform complex mathematics.</li>
+        <li>Can be used for <b>rapid prototyping</b> as well as production-ready software.</li>
+    </ul>
+</div>
+
+<br><br>
+<div class="explanation">
+    <h2>🔹 Python Interpreter</h2>
+    <p>
+        An <b>Interpreter</b> is a special program that executes Python code <b>line by line</b>.  
+        Unlike a compiler, which translates the entire code at once, the interpreter runs the code immediately, making Python easier to debug and test.
+    </p>
+    <ul>
+        <li>👉 Converts high-level Python code into machine code step by step.</li>
+        <li>👉 Executes one line at a time, which makes it slower than compiled languages but easier to understand.</li>
+        <li>👉 Examples: <code>CPython</code> (default Python interpreter), <code>PyPy</code>, <code>Jython</code>.</li>
+    </ul>
+    <p><b>Example:</b>  
+        If you write <code>print("Hello")</code>, the interpreter immediately executes and shows:  
+        <b>Hello</b>
+    </p>
+</div>
+<br> <br>
+<div class="explanation">
+    <h2>🔹 IDE (Integrated Development Environment)</h2>
+    <p>
+        An <b>IDE</b> is a software application that provides a complete environment for coding.  
+        It combines multiple tools into one place, making programming easier and faster.
+    </p>
+    <ul>
+        <li>👉 Provides a code editor (to write code).</li>
+        <li>👉 Syntax highlighting (colors for keywords, variables, etc.).</li>
+        <li>👉 Debugger (to find and fix errors).</li>
+        <li>👉 Auto-completion (suggests code as you type).</li>
+        <li>👉 Project management (to handle multiple files).</li>
+    </ul>
+    <p><b>Examples of IDEs for Python:</b>  
+        <code>PyCharm</code>, <code>VS Code</code>, <code>Spyder</code>, <code>IDLE</code> (comes with Python).
+    </p>
+</div>
+<br><br>
+<div class="explanation">
+    <h2>✨ Difference Between Interpreter and IDE</h2>
+    <table border="1" cellspacing="0" cellpadding="8">
+        <tr>
+            <th>Interpreter</th>
+            <th>IDE</th>
+        </tr>
+        <tr>
+            <td>Executes Python code line by line.</td>
+            <td>Provides tools for writing, editing, running, and debugging code.</td>
+        </tr>
+        <tr>
+            <td>Focuses only on running the code.</td>
+            <td>Helps in the entire development process.</td>
+        </tr>
+        <tr>
+            <td>Example: CPython, PyPy</td>
+            <td>Example: PyCharm, VS Code</td>
+        </tr>
+    </table>
+</div>
+<br><br>
+
+<div class="python-print">
+    <h2>🖨️ The <code>print()</code> Function in Python</h2>
+    <p>
+        The <code>print()</code> function is one of the most commonly used functions in Python.  
+        It is used to display <b>output on the screen</b>.
+    </p>
+    <h3>Syntax:</h3>
+    <pre><code>print(object(s), sep=' ', end='\n', file=sys.stdout)</code></pre>
+
+    <ul>
+        <li><b>object(s)</b> → The values you want to display.</li>
+        <li><b>sep</b> → Separator between multiple values (default: space).</li>
+        <li><b>end</b> → Defines what to print at the end (default: new line <code>\n</code>).</li>
+        <li><b>file</b> → Where the output should go (default: screen).</li>
+    </ul>
+
+    <h3>Examples:</h3>
+    <pre><code>print("Hello, Students!")  
+# Output: Hello, Students!</code></pre>
+
+    <pre><code>print("Python", "is", "fun", sep="-")  
+# Output: Python-is-fun</code></pre>
+
+    <pre><code>print("Hello", end=" ")
+print("World")  
+# Output: Hello World</code></pre>
+</div>
+
+<hr>
+
+<div class="python-command">
+    <h2>💻 Python Commands</h2>
+    <p>
+        A <b>command</b> in Python is an instruction given to the computer to perform a specific task.  
+        These commands can be written in a Python file (<code>.py</code>) or directly in the <b>Python shell (IDLE/terminal)</b>.
+    </p>
+
+    <h3>Types of Commands:</h3>
+    <ul>
+        <li><b>Input/Output Commands</b> → <code>print()</code>, <code>input()</code></li>
+        <li><b>Mathematical Commands</b> → <code>+, -, *, /, %</code></li>
+        <li><b>Conditional Commands</b> → <code>if</code>, <code>else</code>, <code>elif</code></li>
+        <li><b>Looping Commands</b> → <code>for</code>, <code>while</code></li>
+        <li><b>Exit Command</b> → <code>exit()</code> or <code>quit()</code></li>
+    </ul>
+
+    <h3>Examples:</h3>
+    <pre><code># Input/Output
+name = input("Enter your name: ")
+print("Welcome", name)</code></pre>
+
+    <pre><code># Conditional Command
+x = 10
+if x > 5:
+    print("x is greater than 5")</code></pre>
+
+    <pre><code># Looping Command
+for i in range(3):
+    print("Hello")  
+# Output:
+# Hello
+# Hello
+# Hello</code></pre>
+</div>
+
+
+            <div class="code-container">
+    <div class="code-header">
+        <span>program1.py</span>
+        <button class="copy-btn">Copy Code</button>
+    </div>
+    <div class="code-content">
+        <pre><code><span class="comment"># Program 1: Hello World</span>
+<span class="keyword">print</span>(<span class="string">"Hello, Students!"</span>)</code></pre>
+    </div>
+</div>
+
+<div class="explanation">
+    <h3>Explanation:</h3>
+    <p>
+        This is the simplest Python program.  
+        The <code>print()</code> function is used to display output on the screen.  
+        In this program, it prints the text: <b>Hello, Students!</b>
+    </p>
+    <ul>
+        <li><code>print()</code> → It is a built-in Python function used to show output.</li>
+        <li><code>"Hello, Students!"</code> → This is a string written inside double quotes ("").</li>
+    </ul>
+    <p>
+        The output of this program will be:  
+        <b>Hello, Students!</b>
+    </p>
+</div>
+
+
+<div class="code-container">
+    <div class="code-header">
+        <span>program2.py</span>
+        <button class="copy-btn">Copy Code</button>
+    </div>
+    <div class="code-content">
+        <pre><code><span class="comment"># Program 2: Addition of Two Numbers</span>
+a = <span class="number">10</span>
+b = <span class="number">20</span>
+sum = a + b
+<span class="keyword">print</span>(<span class="string">"The sum is:"</span>, sum)</code></pre>
+    </div>
+</div>
+
+<div class="explanation">
+    <h3>Explanation:</h3>
+    <p>
+        This program performs the addition of two numbers in Python.  
+        It takes two numbers <b>a = 10</b> and <b>b = 20</b>, adds them, and stores the result in the variable <b>sum</b>.  
+        Finally, the <code>print()</code> function displays the result.
+    </p>
+    <ul>
+        <li><code>a = 10</code> → Variable <b>a</b> is assigned the value 10.</li>
+        <li><code>b = 20</code> → Variable <b>b</b> is assigned the value 20.</li>
+        <li><code>sum = a + b</code> → Adds the values of <b>a</b> and <b>b</b>, then stores the result in <b>sum</b>.</li>
+        <li><code>print("The sum is:", sum)</code> → Prints the message along with the result.</li>
+    </ul>
+    <p>
+        The output of this program will be:  
+        <b>The sum is: 30</b>
+    </p>
+</div>
+
+
+
+
+<div class="code-container">
+    <div class="code-header">
+        <span>program3.py</span>
+        <button class="copy-btn">Copy Code</button>
+    </div>
+    <div class="code-content">
+        <pre><code><span class="comment"># Program 3: Check Even or Odd</span>
+num = <span class="keyword">int</span>(<span class="keyword">input</span>(<span class="string">"Enter a number: "</span>))
+
+<span class="keyword">if</span> num % <span class="number">2</span> == <span class="number">0</span>:
+    <span class="keyword">print</span>(num, <span class="string">"is Even"</span>)
+<span class="keyword">else</span>:
+    <span class="keyword">print</span>(num, <span class="string">"is Odd"</span>)</code></pre>
+    </div>
+</div>
+
+
+<div class="explanation">
+    <h3>Explanation:</h3>
+    <p>
+        This program checks whether a number entered by the user is <b>even</b> or <b>odd</b>.  
+        The user inputs a number, then the program uses the modulus operator (<code>%</code>) to check divisibility by 2.
+    </p>
+    <ul>
+        <li><code>num = int(input("Enter a number: "))</code> → Takes input from the user, converts it into an integer, and stores it in <b>num</b>.</li>
+        <li><code>if num % 2 == 0:</code> → If the number is divisible by 2, it is <b>even</b>.</li>
+        <li><code>else:</code> → Otherwise, the number is <b>odd</b>.</li>
+        <li><code>print()</code> → Displays whether the number is even or odd.</li>
+    </ul>
+    <p>
+        Example Outputs:  
+        <br> If input is <b>10</b> → Output: <b>10 is Even</b>  
+        <br> If input is <b>7</b> → Output: <b>7 is Odd</b>
+    </p>
+</div>
+
+
+
+<div class="code-container">
+    <div class="code-header">
+        <span>program4.py</span>
+        <button class="copy-btn">Copy Code</button>
+    </div>
+    <div class="code-content">
+        <pre><code><span class="comment"># Program 4: Multiplication Table</span>
+num = <span class="keyword">int</span>(<span class="keyword">input</span>(<span class="string">"Enter a number: "</span>))
+
+<span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">1</span>, <span class="number">11</span>):
+    <span class="keyword">print</span>(num, <span class="string">"x"</span>, i, <span class="string">"="</span>, num * i)</code></pre>
+    </div>
+</div>
+
+
+<div class="code-container">
+    <div class="code-header">
+        <span>program5.py</span>
+        <button class="copy-btn">Copy Code</button>
+    </div>
+    <div class="code-content">
+        <pre><code><span class="comment"># Program 5: Fibonacci Series</span>
+<span class="keyword">def</span> <span class="function">fibonacci</span>(n):
+    a, b = <span class="number">0</span>, <span class="number">1</span>
+    count = <span class="number">0</span>
+    <span class="keyword">while</span> count &lt; n:
+        <span class="keyword">print</span>(a, end=<span class="string">" "</span>)
+        nth = a + b
+        a = b
+        b = nth
+        count += <span class="number">1</span>
+
+fibonacci(<span class="number">10</span>)</code></pre>
+    </div>
+</div>
+
             <div class="code-container">
                 <div class="code-header">
                     <span>example.py</span>
