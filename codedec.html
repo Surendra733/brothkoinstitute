@@ -729,6 +729,188 @@ nothing = <span class="keyword">None</span>
 </div>
 
             
+            <section>
+    <h1>Python Data Types (Detailed Explanation)</h1>
+    <p>
+        In Python, every value has a specific <b>data type</b>. 
+        It tells the interpreter how the value should be stored and what operations can be performed on it.
+    </p>
+
+    <h2>1. Numeric Types</h2>
+    <ul>
+        <li><b>int</b> → Whole numbers (positive or negative) without decimals. Example: 10, -25</li>
+        <li><b>float</b> → Decimal numbers. Example: 3.14, -7.5</li>
+        <li><b>complex</b> → Numbers with real and imaginary parts. Example: 2+3j</li>
+    </ul>
+
+    <div class="code-container">
+        <div class="code-header">
+            <span>numeric_example.py</span>
+            <button class="copy-btn">Copy Code</button>
+        </div>
+        <div class="code-content">
+            <pre><code><span class="comment"># Numeric Types</span>
+x = <span class="number">10</span>          <span class="comment"># int</span>
+y = <span class="number">3.14</span>        <span class="comment"># float</span>
+z = <span class="number">2+3j</span>        <span class="comment"># complex</span>
+
+<span class="keyword">print</span>(x, <span class="keyword">type</span>(x))
+<span class="keyword">print</span>(y, <span class="keyword">type</span>(y))
+<span class="keyword">print</span>(z, <span class="keyword">type</span>(z))</code></pre>
+        </div>
+    </div>
+
+    <h2>2. String (str)</h2>
+    <p>
+        A <b>string</b> is a sequence of characters enclosed in single (' '), double (" ") or triple (''' ''' / """ """) quotes.
+    </p>
+
+    <div class="code-container">
+        <div class="code-header">
+            <span>string_example.py</span>
+            <button class="copy-btn">Copy Code</button>
+        </div>
+        <div class="code-content">
+            <pre><code><span class="comment"># String Example</span>
+name = <span class="string">"Python"</span>
+greet = <span class="string">'Hello'</span>
+multiline = <span class="string">"""This 
+is 
+multiline"""</span>
+
+<span class="keyword">print</span>(name)
+<span class="keyword">print</span>(greet)
+<span class="keyword">print</span>(multiline)</code></pre>
+        </div>
+    </div>
+
+    <h2>3. List</h2>
+    <p>
+        A <b>list</b> is an ordered, mutable (changeable) collection of items. 
+        It can hold different data types in one list.
+    </p>
+
+    <div class="code-container">
+        <div class="code-header">
+            <span>list_example.py</span>
+            <button class="copy-btn">Copy Code</button>
+        </div>
+        <div class="code-content">
+            <pre><code><span class="comment"># List Example</span>
+fruits = [<span class="string">"apple"</span>, <span class="string">"banana"</span>, <span class="string">"cherry"</span>]
+numbers = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]
+
+fruits.append(<span class="string">"mango"</span>)
+<span class="keyword">print</span>(fruits)
+<span class="keyword">print</span>(numbers[<span class="number">2</span>])</code></pre>
+        </div>
+    </div>
+
+    <h2>4. Tuple</h2>
+    <p>
+        A <b>tuple</b> is an ordered, immutable (unchangeable) collection of items. 
+        Once created, elements cannot be modified.
+    </p>
+
+    <div class="code-container">
+        <div class="code-header">
+            <span>tuple_example.py</span>
+            <button class="copy-btn">Copy Code</button>
+        </div>
+        <div class="code-content">
+            <pre><code><span class="comment"># Tuple Example</span>
+coordinates = (<span class="number">10</span>, <span class="number">20</span>)
+colors = (<span class="string">"red"</span>, <span class="string">"blue"</span>, <span class="string">"green"</span>)
+
+<span class="keyword">print</span>(coordinates)
+<span class="keyword">print</span>(colors[<span class="number">1</span>])</code></pre>
+        </div>
+    </div>
+
+    <h2>5. Dictionary (dict)</h2>
+    <p>
+        A <b>dictionary</b> is an unordered collection of key-value pairs. 
+        Keys must be unique and immutable.
+    </p>
+
+    <div class="code-container">
+        <div class="code-header">
+            <span>dict_example.py</span>
+            <button class="copy-btn">Copy Code</button>
+        </div>
+        <div class="code-content">
+            <pre><code><span class="comment"># Dictionary Example</span>
+student = {
+    <span class="string">"name"</span>: <span class="string">"Alice"</span>,
+    <span class="string">"age"</span>: <span class="number">21</span>,
+    <span class="string">"grade"</span>: <span class="string">"A"</span>
+}
+
+<span class="keyword">print</span>(student)
+<span class="keyword">print</span>(student[<span class="string">"name"</span>])</code></pre>
+        </div>
+    </div>
+
+    <h2>6. Set</h2>
+    <p>
+        A <b>set</b> is an unordered collection of unique items (no duplicates).
+    </p>
+
+    <div class="code-container">
+        <div class="code-header">
+            <span>set_example.py</span>
+            <button class="copy-btn">Copy Code</button>
+        </div>
+        <div class="code-content">
+            <pre><code><span class="comment"># Set Example</span>
+numbers = {<span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">3</span>}
+letters = set([<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>])
+
+<span class="keyword">print</span>(numbers)   <span class="comment"># duplicates removed</span>
+<span class="keyword">print</span>(letters)</code></pre>
+        </div>
+    </div>
+
+    <h2>7. Boolean (bool)</h2>
+    <p>
+        A <b>boolean</b> represents one of two values: <code>True</code> or <code>False</code>.
+    </p>
+
+    <div class="code-container">
+        <div class="code-header">
+            <span>bool_example.py</span>
+            <button class="copy-btn">Copy Code</button>
+        </div>
+        <div class="code-content">
+            <pre><code><span class="comment"># Boolean Example</span>
+is_active = <span class="keyword">True</span>
+is_admin = <span class="keyword">False</span>
+
+<span class="keyword">print</span>(is_active)
+<span class="keyword">print</span>(is_admin)</code></pre>
+        </div>
+    </div>
+
+    <h2>8. None Type</h2>
+    <p>
+        <b>None</b> represents the absence of a value or a null value. Its type is <code>NoneType</code>.
+    </p>
+
+    <div class="code-container">
+        <div class="code-header">
+            <span>none_example.py</span>
+            <button class="copy-btn">Copy Code</button>
+        </div>
+        <div class="code-content">
+            <pre><code><span class="comment"># None Example</span>
+result = <span class="keyword">None</span>
+
+<span class="keyword">print</span>(result)
+<span class="keyword">print</span>(<span class="keyword">type</span>(result))</code></pre>
+        </div>
+    </div>
+</section>
+
 
 
 <div class="code-container">
