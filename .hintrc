@@ -30,6 +30,7 @@
         "image-alt": "off"
       }
     ],
-    "disown-opener": "off"
+    "disown-opener": "off",
+    "apple-touch-icons": "off"
   }
 }
