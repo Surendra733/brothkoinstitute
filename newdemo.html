@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+
+ body {
+      font-family: Arial, sans-serif;
+      background: #1a2227;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      
+    }
+    
+    .register{
+      background: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0px 4px 10px rgb(0, 0, 0,0.1);
+      width: 300px;
+    }
+    
+    .register h1{
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 24px;
+      color: #333;
+    }
+    .register label{
+      display:block;
+      margin-bottom: 5px;
+      font-weight: bold;
+      color: #555;
+
+    }
+    .register input{
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      outline: none;
+      font-size: 14px;
+    }
+    .register input:focus{
+      border-radius: #007BFF;
+    }
+    .register .btm{
+      width: 48%;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+    .btm-group
+    {
+      display: flex;
+      justify-content: space-between;
+      
+    }
+    .register .submit-btm{
+      background: #007BFF;
+      color: white;
+    }
+    .register .reset-btm{
+       background: #f44336;
+      color: white;
+    }
+  
+  </style>
+</head>
+<body>
+  <div class="register">
+  <div class="title"><h1>Register page</h1></div>
+   <form action="https://www.youtube.com" method="get" target="_blank">
+  <div>
+    <label for="name">Name-</label>
+  <input type="text" required><br><br>
+  
+  <label for="email"> Email-</label>
+  <input type="email" required><br> <br>
+
+  <label for="mobile">Mobile-</label>
+  <input type="number" required><br> <br>
+
+  <label for="address">Adress-</label>
+  <input type="text" required><br> <br>
+
+  <label for="password">Password-</label>
+  <input type="password" required><br> <br>
+  </div>
+  
+ <div class="btm-group">
+  <input type="submit" value="Register" class="btm submit-btm" >
+  <input type="reset" value="Reset" class="btm reset-btm">
+ </div>
+</form>
+  </div>
+</body>
+</html>
