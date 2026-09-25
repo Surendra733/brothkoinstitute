@@ -2,247 +2,116 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Brothko Institute - Student Practice</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admin Panel - Upload Notes</title>
   <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
 
-  <!-- Firebase -->
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
-    import { 
-      getAuth, 
-      signInWithEmailAndPassword, 
-      createUserWithEmailAndPassword, 
-      sendEmailVerification,
-      signOut,
-      onAuthStateChanged 
-    } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js";
-    import { getFirestore, doc, setDoc, getDoc, collection, getDocs, addDoc } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
+  <div class="bg-white shadow-2xl rounded-xl p-8 w-full max-w-lg">
+    <h2 class="text-2xl font-bold text-center mb-4">📂 Admin Panel - Upload PDFs</h2>
 
-    const firebaseConfig = {
-      apiKey: "AIzaSyBbhUJkMbLwsu8kgVC5zSmePpOr5EX6kyI",
-      authDomain: "brothkointituteweb.firebaseapp.com",
-      projectId: "brothkointituteweb",
-      storageBucket: "brothkointituteweb.firebasestorage.app",
-      messagingSenderId: "893115179713",
-      appId: "1:893115179713:web:32bbe9218f434e211eea40"
-    };
+    <!-- Admin Login -->
+    <div id="adminLogin">
+      <input id="adminEmail" type="email" placeholder="Admin Email" class="w-full border p-2 rounded mb-3">
+      <input id="adminPass" type="password" placeholder="Password" class="w-full border p-2 rounded mb-3">
+      <button onclick="adminLogin()" class="w-full bg-blue-600 text-white p-2 rounded">Login</button>
+      <p id="adminError" class="text-red-500 mt-2 hidden">Invalid admin credentials</p>
+    </div>
 
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
-    const db = getFirestore(app);
+    <!-- Upload Section -->
+    <div id="uploadSection" class="hidden">
+      <h3 class="text-lg font-semibold mb-2">➕ Add PDF</h3>
+      <input id="pdfTitle" type="text" placeholder="Enter PDF Title" class="w-full border p-2 rounded mb-3">
 
-    let currentUser = null;
-    let allQuestions = {};
-    let currentQuestions = [];
-    let userAnswers = {};
+      <!-- ✅ File Upload -->
+      <input id="pdfFile" type="file" accept="application/pdf" class="w-full border p-2 rounded mb-3">
 
-    onAuthStateChanged(auth, async (user) => {
-      if (user) {
-        currentUser = user;
-        // Check if profile exists
-        const docSnap = await getDoc(doc(db, "students", user.uid));
-        if (!docSnap.exists()) {
-          // Show Profile Setup
-          document.getElementById("loginBox").classList.add("hidden");
-          document.getElementById("profileBox").classList.remove("hidden");
-        } else {
-          // Profile exists, go to Quiz Section
-          showQuizDashboard();
-        }
+      <button onclick="addPDF()" class="w-full bg-green-600 text-white p-2 rounded mb-3">Add PDF</button>
+      <button onclick="downloadJSON()" class="w-full bg-purple-600 text-white p-2 rounded">💾 Download file.json</button>
+
+      <h3 class="text-lg font-semibold mt-4">📑 Current PDFs</h3>
+      <ul id="pdfList" class="list-disc ml-6 mt-2"></ul>
+    </div>
+  </div>
+
+  <script>
+    let pdfData = [];
+
+    // ✅ Admin Login (Static credentials in admin.json)
+    async function adminLogin() {
+      const email = document.getElementById("adminEmail").value;
+      const pass = document.getElementById("adminPass").value;
+
+      const res = await fetch("admin.json");
+      const admins = await res.json();
+
+      const validAdmin = admins.find(a => a.email === email && a.password === pass);
+
+      if (validAdmin) {
+        document.getElementById("adminLogin").classList.add("hidden");
+        document.getElementById("uploadSection").classList.remove("hidden");
+        loadExisting();
+      } else {
+        document.getElementById("adminError").classList.remove("hidden");
       }
-    });
-
-    window.loginStudent = async function() {
-      const email = document.getElementById("email").value.trim();
-      const password = document.getElementById("password").value.trim();
-      try {
-        const userCred = await signInWithEmailAndPassword(auth, email, password);
-        if (!userCred.user.emailVerified) {
-          document.getElementById("errorMsg").innerText = "⚠️ Please verify your email first!";
-          return;
-        }
-      } catch (err) {
-        document.getElementById("errorMsg").innerText = "❌ Invalid Email or Password";
-      }
-    };
-
-    window.registerStudent = async function() {
-      const email = document.getElementById("regEmail").value.trim();
-      const password = document.getElementById("regPassword").value.trim();
-      try {
-        const userCred = await createUserWithEmailAndPassword(auth, email, password);
-        await sendEmailVerification(userCred.user);
-        alert("Verification email sent! Please check your inbox, verify, and log in.");
-        document.getElementById("registerBox").classList.add("hidden");
-        document.getElementById("loginBox").classList.remove("hidden");
-      } catch (err) {
-        alert("Registration Error: " + err.message);
-      }
-    };
-
-    window.saveProfile = async function() {
-      const college = document.getElementById("collegeName").value.trim();
-      const course = document.getElementById("courseName").value.trim();
-      const branch = document.getElementById("branchName").value.trim();
-
-      if (!college || !course || !branch) {
-        alert("Please fill out all details.");
-        return;
-      }
-
-      await setDoc(doc(db, "students", currentUser.uid), {
-        email: currentUser.email,
-        college,
-        course,
-        branch,
-        createdAt: new Date()
-      });
-
-      showQuizDashboard();
-    };
-
-    async function showQuizDashboard() {
-      document.getElementById("loginBox").classList.add("hidden");
-      document.getElementById("registerBox").classList.add("hidden");
-      document.getElementById("profileBox").classList.add("hidden");
-      document.getElementById("quizBox").classList.remove("hidden");
-
-      // Load Questions from Firestore
-      const querySnapshot = await getDocs(collection(db, "questions"));
-      allQuestions = { java: [], python: [], htmlcss: [], javascript: [] };
-      querySnapshot.forEach((doc) => {
-        let qData = doc.data();
-        if (allQuestions[qData.subject]) {
-          allQuestions[qData.subject].push(qData);
-        }
-      });
-      loadQuestions('java');
     }
 
-    window.loadQuestions = function(lang) {
-      currentQuestions = allQuestions[lang] || [];
-      userAnswers = {};
-      const container = document.getElementById("questions");
-      container.innerHTML = "";
-
-      if (currentQuestions.length === 0) {
-        container.innerHTML = `<p class="text-gray-500">No questions available for this subject yet.</p>`;
-        return;
+    // ✅ Load existing PDFs
+    async function loadExisting() {
+      try {
+        const res = await fetch("file.json");
+        pdfData = await res.json();
+        renderList();
+      } catch {
+        pdfData = [];
       }
+    }
 
-      currentQuestions.forEach((q, index) => {
-        const div = document.createElement("div");
-        div.className = "p-5 border rounded-xl shadow-sm bg-gray-50";
-        div.innerHTML = `
-          <p class="font-bold mb-3 text-lg text-gray-800">${index + 1}. ${q.q}</p>
-          ${q.options.map(opt => `
-            <button onclick="selectOption(${index}, '${opt}', this)" class="option-btn block w-full text-left border rounded-xl p-3 mb-2 hover:bg-indigo-100 transition-all">
-              ${opt}
-            </button>
-          `).join("")}
-        `;
-        container.appendChild(div);
+    // ✅ Add PDF entry (from device file)
+    function addPDF() {
+      const title = document.getElementById("pdfTitle").value.trim();
+      const fileInput = document.getElementById("pdfFile");
+
+      if (title === "" || fileInput.files.length === 0) return;
+
+      const file = fileInput.files[0];
+      const fakePath = "uploads/" + file.name; // 👈 mimic server upload path
+
+      pdfData.push({ title, file: fakePath });
+      renderList();
+
+      document.getElementById("pdfTitle").value = "";
+      fileInput.value = "";
+    }
+
+    // ✅ Render PDF List
+    function renderList() {
+      const list = document.getElementById("pdfList");
+      list.innerHTML = "";
+      pdfData.forEach((pdf, i) => {
+        list.innerHTML += `
+          <li>${pdf.title} - <span class="text-gray-500">${pdf.file}</span>
+          <button onclick="deletePDF(${i})" class="text-red-600 ml-2">❌</button></li>`;
       });
-    };
+    }
 
-    window.selectOption = function(index, selectedOpt, btn) {
-      userAnswers[index] = selectedOpt;
-      const parent = btn.parentElement;
-      parent.querySelectorAll(".option-btn").forEach(b => b.classList.remove("bg-indigo-600", "text-white"));
-      btn.classList.add("bg-indigo-600", "text-white");
-    };
+    // ✅ Delete PDF
+    function deletePDF(index) {
+      pdfData.splice(index, 1);
+      renderList();
+    }
 
-    window.submitQuiz = async function() {
-      let score = 0;
-      currentQuestions.forEach((q, index) => {
-        if (userAnswers[index] === q.answer) score++;
-      });
-
-      // Save Score to Firestore
-      await addDoc(collection(db, "scores"), {
-        uid: currentUser.uid,
-        email: currentUser.email,
-        score: score,
-        total: currentQuestions.length,
-        timestamp: new Date()
-      });
-
-      document.getElementById("scoreDisplay").innerText = `✅ You got ${score} out of ${currentQuestions.length} correct! Score saved to database.`;
-      document.getElementById("scoreModal").classList.remove("hidden");
-    };
-
-    window.logout = async function() {
-      await signOut(auth);
-      location.reload();
-    };
-
-    window.toggleRegister = function() {
-      document.getElementById("loginBox").classList.toggle("hidden");
-      document.getElementById("registerBox").classList.toggle("hidden");
-    };
+    // ✅ Export file.json
+    function downloadJSON() {
+      const blob = new Blob([JSON.stringify(pdfData, null, 2)], { type: "application/json" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "file.json";
+      a.click();
+      URL.revokeObjectURL(url);
+    }
   </script>
-</head>
-
-<body class="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 min-h-screen flex items-center justify-center p-6">
-
-  <!-- Login Box -->
-  <div id="loginBox" class="bg-white shadow-2xl rounded-2xl p-8 w-full max-w-md">
-    <h2 class="text-3xl font-extrabold text-center text-indigo-600 mb-6">Student Login</h2>
-    <input id="email" type="email" placeholder="📧 Email" class="w-full border rounded-xl p-3 mb-4 outline-none focus:ring-2 focus:ring-indigo-400">
-    <input id="password" type="password" placeholder="🔑 Password" class="w-full border rounded-xl p-3 mb-4 outline-none focus:ring-2 focus:ring-indigo-400">
-    <button onclick="loginStudent()" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-3 rounded-xl font-semibold shadow-md">🚀 Login</button>
-    <button onclick="toggleRegister()" class="w-full bg-gray-200 hover:bg-gray-300 text-gray-700 py-2 rounded-xl mt-3 font-medium">New Student? Register</button>
-    <p id="errorMsg" class="text-red-600 mt-4 text-center font-semibold"></p>
-  </div>
-
-  <!-- Register Box -->
-  <div id="registerBox" class="bg-white shadow-2xl rounded-2xl p-8 w-full max-w-md hidden">
-    <h2 class="text-3xl font-extrabold text-center text-purple-600 mb-6">Student Register</h2>
-    <input id="regEmail" type="email" placeholder="📧 Email" class="w-full border rounded-xl p-3 mb-4 outline-none">
-    <input id="regPassword" type="password" placeholder="🔑 Password" class="w-full border rounded-xl p-3 mb-4 outline-none">
-    <button onclick="registerStudent()" class="w-full bg-purple-600 hover:bg-purple-700 text-white py-3 rounded-xl font-semibold shadow-md">✨ Register & Verify Email</button>
-    <button onclick="toggleRegister()" class="w-full bg-gray-200 text-gray-700 py-2 rounded-xl mt-3">Back to Login</button>
-  </div>
-
-  <!-- Profile Setup Box (First Time after login) -->
-  <div id="profileBox" class="bg-white shadow-2xl rounded-2xl p-8 w-full max-w-md hidden">
-    <h2 class="text-2xl font-extrabold text-center text-green-600 mb-4">Complete Your Profile</h2>
-    <input id="collegeName" type="text" placeholder="🏫 College Name" class="w-full border rounded-xl p-3 mb-4 outline-none">
-    <input id="courseName" type="text" placeholder="📚 Course (e.g. B.Tech / BCA)" class="w-full border rounded-xl p-3 mb-4 outline-none">
-    <input id="branchName" type="text" placeholder="💻 Branch (e.g. CSE / IT)" class="w-full border rounded-xl p-3 mb-4 outline-none">
-    <button onclick="saveProfile()" class="w-full bg-green-600 hover:bg-green-700 text-white py-3 rounded-xl font-semibold shadow-md">Save & Start Practice</button>
-  </div>
-
-  <!-- Quiz Section -->
-  <div id="quizBox" class="hidden bg-white shadow-2xl rounded-2xl p-8 w-full max-w-4xl">
-    <div class="flex justify-between items-center mb-6">
-      <h2 class="text-2xl font-extrabold text-green-600">MCQ Practice Portal</h2>
-      <button onclick="logout()" class="bg-red-600 text-white px-4 py-2 rounded-xl text-sm font-semibold">🚪 Logout</button>
-    </div>
-
-    <!-- Navigation Buttons -->
-    <div class="flex justify-center flex-wrap gap-3 mb-6">
-      <button onclick="loadQuestions('java')" class="px-5 py-2 bg-indigo-600 text-white rounded-xl shadow">☕ Java</button>
-      <button onclick="loadQuestions('python')" class="px-5 py-2 bg-green-600 text-white rounded-xl shadow">🐍 Python</button>
-      <button onclick="loadQuestions('htmlcss')" class="px-5 py-2 bg-pink-600 text-white rounded-xl shadow">🌐 HTML & CSS</button>
-      <button onclick="loadQuestions('javascript')" class="px-5 py-2 bg-yellow-500 text-white rounded-xl shadow">⚡ JavaScript</button>
-    </div>
-
-    <!-- Questions Container -->
-    <div id="questions" class="space-y-6 max-h-96 overflow-y-auto p-2"></div>
-
-    <button onclick="submitQuiz()" class="mt-6 w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-xl font-bold shadow">Submit Test & Save Score</button>
-  </div>
-
-  <!-- Score Modal -->
-  <div id="scoreModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4">
-    <div class="bg-white p-6 rounded-2xl max-w-sm w-full text-center">
-      <h3 class="text-xl font-bold mb-3">Test Result</h3>
-      <p id="scoreDisplay" class="text-gray-700 mb-4"></p>
-      <button onclick="location.reload()" class="bg-indigo-600 text-white px-4 py-2 rounded-xl">Close</button>
-    </div>
-  </div>
-
 </body>
 </html>
