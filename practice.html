@@ -7,13 +7,26 @@
 
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Firebase -->
+  <!-- Firebase SDKs -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
     import {
       getAuth,
-      signInWithEmailAndPassword
+      signInWithEmailAndPassword,
+      createUserWithEmailAndPassword,
+      sendEmailVerification,
+      signOut,
+      onAuthStateChanged
     } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js";
+    import { 
+      getFirestore, 
+      collection, 
+      getDocs, 
+      doc, 
+      setDoc, 
+      getDoc, 
+      addDoc 
+    } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
 
     // Your Firebase configuration
     const firebaseConfig = {
@@ -27,13 +40,172 @@
 
     // Initialize Firebase
     const app = initializeApp(firebaseConfig);
-
-    // Initialize Firebase Authentication
     const auth = getAuth(app);
+    const db = getFirestore(app);
 
-    // Firebase Login Function
-    window.firebaseLogin = async function(email, password) {
-      return await signInWithEmailAndPassword(auth, email, password);
+    let currentUser = null;
+    let allQuestions = { java: [], python: [], htmlcss: [], javascript: [] };
+    let currentQuestions = [];
+
+    // Check Authentication state
+    onAuthStateChanged(auth, async (user) => {
+      if (user) {
+        await user.reload();
+        if (!user.emailVerified) {
+          document.getElementById("errorMsg").innerText = "⚠️ Please verify your email via the link sent to your inbox before logging in.";
+          await signOut(auth);
+          return;
+        }
+
+        currentUser = user;
+        // Check if student profile (College, Course, Branch) is already saved
+        const docSnap = await getDoc(doc(db, "students", user.uid));
+        if (!docSnap.exists()) {
+          document.getElementById("loginBox").classList.add("hidden");
+          document.getElementById("registerBox").classList.add("hidden");
+          document.getElementById("profileBox").classList.remove("hidden");
+        } else {
+          loadQuizPortal();
+        }
+      }
+    });
+
+    // Firebase Student Login
+    window.login = async function() {
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value.trim();
+      const errorMsg = document.getElementById("errorMsg");
+      errorMsg.innerText = "";
+
+      if (!email || !password) {
+        errorMsg.innerText = "⚠️ Please enter Email and Password";
+        return;
+      }
+
+      try {
+        await signInWithEmailAndPassword(auth, email, password);
+      } catch (err) {
+        console.error("Firebase Login Error:", err);
+        errorMsg.innerText = "❌ Invalid Email or Password";
+      }
+    };
+
+    // Firebase Student Register
+    window.registerStudent = async function() {
+      const email = document.getElementById("regEmail").value.trim();
+      const password = document.getElementById("regPassword").value.trim();
+      const regError = document.getElementById("regError");
+      regError.innerText = "";
+
+      if (!email || !password) {
+        regError.innerText = "⚠️ Please fill all fields";
+        return;
+      }
+
+      if (password.length < 6) {
+        regError.innerText = "⚠️ Password must be at least 6 characters";
+        return;
+      }
+
+      try {
+        const userCred = await createUserWithEmailAndPassword(auth, email, password);
+        await sendEmailVerification(userCred.user);
+        alert("✨ Registration Successful! A verification link has been sent to " + email + ". Please check your inbox, verify your email, and then log in.");
+        toggleRegister();
+      } catch (err) {
+        regError.innerText = "❌ Error: " + err.message;
+      }
+    };
+
+    // Save Student Profile (College Name, Course, Branch)
+    window.saveProfile = async function() {
+      const college = document.getElementById("collegeName").value.trim();
+      const course = document.getElementById("courseName").value.trim();
+      const branch = document.getElementById("branchName").value.trim();
+
+      if (!college || !course || !branch) {
+        alert("Please fill out all college and branch details.");
+        return;
+      }
+
+      await setDoc(doc(db, "students", currentUser.uid), {
+        email: currentUser.email,
+        college,
+        course,
+        branch,
+        createdAt: new Date()
+      });
+
+      loadQuizPortal();
+    };
+
+    // Load Quiz Portal and Fetch Questions from Firestore Database
+    async function loadQuizPortal() {
+      document.getElementById("loginBox").classList.add("hidden");
+      document.getElementById("registerBox").classList.add("hidden");
+      document.getElementById("profileBox").classList.add("hidden");
+      document.getElementById("quizBox").classList.remove("hidden");
+
+      try {
+        const querySnapshot = await getDocs(collection(db, "questions"));
+        allQuestions = { java: [], python: [], htmlcss: [], javascript: [] };
+        
+        querySnapshot.forEach((docSnap) => {
+          let qData = docSnap.data();
+          if (allQuestions[qData.subject]) {
+            allQuestions[qData.subject].push(qData);
+          }
+        });
+
+        loadQuestions("java");
+      } catch (err) {
+        console.error("Error loading questions from database:", err);
+      }
+    }
+
+    // Load Questions by Language
+    window.loadQuestions = function(lang) {
+      if (allQuestions[lang]) {
+        currentQuestions = allQuestions[lang];
+        renderQuestions(currentQuestions);
+      }
+    };
+
+    // Submit Quiz and Save Score
+    window.submitQuiz = async function() {
+      let score = 0;
+      currentQuestions.forEach((q, index) => {
+        // You can track selected answers here if required
+      });
+
+      // Saving score record to database
+      if (currentUser) {
+        await addDoc(collection(db, "scores"), {
+          uid: currentUser.uid,
+          email: currentUser.email,
+          timestamp: new Date()
+        });
+      }
+    };
+
+    // Toggle between Login and Register views
+    window.toggleRegister = function() {
+      document.getElementById("loginBox").classList.toggle("hidden");
+      document.getElementById("registerBox").classList.toggle("hidden");
+    };
+
+    // Logout function
+    window.logout = async function() {
+      await signOut(auth);
+      location.reload();
+    };
+
+    window.backto = function() {
+      document.location.href = "index.html";
+    };
+
+    window.quixeload = function() {
+      document.location.href = "quiz.html";
     };
   </script>
 </head>
@@ -41,332 +213,114 @@
 <body class="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 min-h-screen flex items-center justify-center p-6">
 
   <!-- Login Box -->
-  <div id="loginBox" class="bg-white shadow-2xl rounded-2xl p-8 w-full max-w-md transform transition-all hover:scale-105 duration-300">
-
+  <div id="loginBox" class="bg-white shadow-2xl rounded-2xl p-8 w-full max-w-md transform transition-all duration-300">
     <h2 class="text-3xl font-extrabold text-center text-indigo-600 mb-6">
       Login to Practice
     </h2>
 
-    <input
-      id="email"
-      type="email"
-      placeholder="📧 Email"
-      class="w-full border rounded-xl p-3 mb-4 focus:ring-2 focus:ring-indigo-400 outline-none"
-    >
+    <input id="email" type="email" placeholder="📧 Email" class="w-full border rounded-xl p-3 mb-4 focus:ring-2 focus:ring-indigo-400 outline-none">
+    <input id="password" type="password" placeholder="🔑 Password" class="w-full border rounded-xl p-3 mb-4 focus:ring-2 focus:ring-indigo-400 outline-none">
 
-    <input
-      id="password"
-      type="password"
-      placeholder="🔑 Password"
-      class="w-full border rounded-xl p-3 mb-4 focus:ring-2 focus:ring-indigo-400 outline-none"
-    >
-
-    <button
-      onclick="login()"
-      class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-3 rounded-xl font-semibold shadow-md transition-all"
-    >
+    <button onclick="login()" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-3 rounded-xl font-semibold shadow-md transition-all">
       🚀 Login
     </button>
 
-    <button
-      onclick="backto()"
-      class="w-full bg-gray-700 hover:bg-gray-800 text-white py-3 rounded-xl mt-3 font-semibold shadow-md transition-all"
-    >
+    <button onclick="toggleRegister()" class="w-full bg-gray-100 hover:bg-gray-200 text-gray-700 py-3 rounded-xl mt-3 font-semibold shadow-md transition-all">
+      ✨ New Student? Register
+    </button>
+
+    <button onclick="backto()" class="w-full bg-gray-700 hover:bg-gray-800 text-white py-3 rounded-xl mt-3 font-semibold shadow-md transition-all">
       🏠 Back To Home
     </button>
 
-    <p id="errorMsg" class="text-red-600 mt-4 text-center font-semibold"></p>
-
+    <p id="errorMsg" class="text-red-600 mt-4 text-center font-semibold text-sm"></p>
   </div>
 
+  <!-- Register Box -->
+  <div id="registerBox" class="bg-white shadow-2xl rounded-2xl p-8 w-full max-w-md hidden">
+    <h2 class="text-3xl font-extrabold text-center text-purple-600 mb-6">Student Register</h2>
+    <input id="regEmail" type="email" placeholder="📧 Email" class="w-full border rounded-xl p-3 mb-4 outline-none">
+    <input id="regPassword" type="password" placeholder="🔑 Password (min 6 characters)" class="w-full border rounded-xl p-3 mb-4 outline-none">
+    <button onclick="registerStudent()" class="w-full bg-purple-600 hover:bg-purple-700 text-white py-3 rounded-xl font-semibold shadow-md">Register & Verify Email</button>
+    <button onclick="toggleRegister()" class="w-full bg-gray-200 text-gray-700 py-2 rounded-xl mt-3 font-medium">Back to Login</button>
+    <p id="regError" class="text-red-600 mt-4 text-center font-semibold text-sm"></p>
+  </div>
+
+  <!-- Profile Setup Box (Appears on first login after email verification) -->
+  <div id="profileBox" class="bg-white shadow-2xl rounded-2xl p-8 w-full max-w-md hidden">
+    <h2 class="text-2xl font-extrabold text-center text-green-600 mb-2">Complete Your Profile</h2>
+    <p class="text-gray-500 text-xs text-center mb-4">Please provide your academic details.</p>
+    <input id="collegeName" type="text" placeholder="🏫 College Name" class="w-full border rounded-xl p-3 mb-4 outline-none">
+    <input id="courseName" type="text" placeholder="📚 Course (e.g. BCA / B.Tech)" class="w-full border rounded-xl p-3 mb-4 outline-none">
+    <input id="branchName" type="text" placeholder="💻 Branch (e.g. CSE / IT)" class="w-full border rounded-xl p-3 mb-4 outline-none">
+    <button onclick="saveProfile()" class="w-full bg-green-600 hover:bg-green-700 text-white py-3 rounded-xl font-semibold shadow-md">Save & Start Practice</button>
+  </div>
 
   <!-- Quiz Section -->
-  <div
-    id="quizBox"
-    class="hidden bg-white shadow-2xl rounded-2xl p-8 w-full max-w-4xl animate__animated animate__fadeIn"
-  >
-
+  <div id="quizBox" class="hidden bg-white shadow-2xl rounded-2xl p-8 w-full max-w-4xl">
     <h2 class="text-3xl font-extrabold text-center text-green-600 mb-6">
       MCQ Practice
     </h2>
 
-
     <!-- Navigation Buttons -->
     <div class="flex justify-center flex-wrap gap-4 mb-6">
-
-      <button
-        onclick="loadQuestions('java')"
-        class="px-6 py-2 bg-indigo-600 text-white rounded-xl shadow-md hover:scale-105 transform transition"
-      >
-        ☕ Java
-      </button>
-
-      <button
-        onclick="loadQuestions('python')"
-        class="px-6 py-2 bg-green-600 text-white rounded-xl shadow-md hover:scale-105 transform transition"
-      >
-        🐍 Python
-      </button>
-
-      <button
-        onclick="loadQuestions('htmlcss')"
-        class="px-6 py-2 bg-pink-600 text-white rounded-xl shadow-md hover:scale-105 transform transition"
-      >
-        🌐 HTML & CSS
-      </button>
-
-      <button
-        onclick="loadQuestions('javascript')"
-        class="px-6 py-2 bg-yellow-500 text-white rounded-xl shadow-md hover:scale-105 transform transition"
-      >
-        ⚡ JavaScript
-      </button>
-
-      <button
-        onclick="quixeload()"
-        class="px-6 py-2 bg-yellow-500 text-white rounded-xl shadow-md hover:scale-105 transform transition"
-      >
-        Quiz
-      </button>
-
+      <button onclick="loadQuestions('java')" class="px-6 py-2 bg-indigo-600 text-white rounded-xl shadow-md hover:scale-105 transform transition">☕ Java</button>
+      <button onclick="loadQuestions('python')" class="px-6 py-2 bg-green-600 text-white rounded-xl shadow-md hover:scale-105 transform transition">🐍 Python</button>
+      <button onclick="loadQuestions('htmlcss')" class="px-6 py-2 bg-pink-600 text-white rounded-xl shadow-md hover:scale-105 transform transition">🌐 HTML & CSS</button>
+      <button onclick="loadQuestions('javascript')" class="px-6 py-2 bg-yellow-500 text-white rounded-xl shadow-md hover:scale-105 transform transition">⚡ JavaScript</button>
+      <button onclick="quixeload()" class="px-6 py-2 bg-yellow-500 text-white rounded-xl shadow-md hover:scale-105 transform transition">Quiz</button>
     </div>
-
 
     <!-- Questions -->
     <div id="questions" class="space-y-6"></div>
 
-
-    <button
-      onclick="logout()"
-      class="mt-6 bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-xl shadow-md font-semibold transition"
-    >
+    <button onclick="logout()" class="mt-6 bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-xl shadow-md font-semibold transition">
       🚪 Logout
     </button>
-
   </div>
 
-
   <script>
-
-    let allQuestions = {};
     let currentQuestions = [];
 
-
-    // ==========================================
     // Render Questions
-    // ==========================================
-
     function renderQuestions(questions) {
-
       const container = document.getElementById("questions");
-
       container.innerHTML = "";
 
+      if (!questions || questions.length === 0) {
+        container.innerHTML = `<p class="text-center text-gray-500 py-4">No questions added by admin for this subject yet.</p>`;
+        return;
+      }
+
       questions.forEach((q, index) => {
-
         const div = document.createElement("div");
-
-        div.classList.add(
-          "p-5",
-          "border",
-          "rounded-xl",
-          "shadow-md",
-          "hover:shadow-lg",
-          "transition-all",
-          "bg-gray-50"
-        );
+        div.classList.add("p-5", "border", "rounded-xl", "shadow-md", "hover:shadow-lg", "transition-all", "bg-gray-50");
 
         div.innerHTML = `
-          <p class="font-bold mb-3 text-lg text-gray-800">
-            ${index + 1}. ${q.q}
-          </p>
-
+          <p class="font-bold mb-3 text-lg text-gray-800">${index + 1}. ${q.q}</p>
           ${q.options.map(opt => `
-            <button
-              onclick="checkAnswer(${index}, '${opt}', this)"
-              class="option-btn block w-full text-left border rounded-xl p-3 mb-2 hover:bg-indigo-100 transition-all"
-            >
+            <button onclick="checkAnswer(${index}, '${opt}', this)" class="option-btn block w-full text-left border rounded-xl p-3 mb-2 hover:bg-indigo-100 transition-all">
               ${opt}
             </button>
           `).join("")}
         `;
-
         container.appendChild(div);
-
       });
-
     }
 
-
-    // ==========================================
     // Check Answer
-    // ==========================================
-
     function checkAnswer(index, selected, btn) {
-
       const correct = currentQuestions[index].answer;
+      const parent = btn.parentElement;
+      parent.querySelectorAll(".option-btn").forEach(b => b.classList.remove("bg-green-500", "bg-red-500", "text-white"));
 
       if (selected === correct) {
-
-        btn.classList.add(
-          "bg-green-500",
-          "text-white"
-        );
-
+        btn.classList.add("bg-green-500", "text-white");
       } else {
-
-        btn.classList.add(
-          "bg-red-500",
-          "text-white"
-        );
-
+        btn.classList.add("bg-red-500", "text-white");
       }
-
     }
-
     window.checkAnswer = checkAnswer;
-
-
-    // ==========================================
-    // Load Questions by Language
-    // ==========================================
-
-    function loadQuestions(lang) {
-
-      if (allQuestions[lang]) {
-
-        currentQuestions = allQuestions[lang];
-
-        renderQuestions(currentQuestions);
-
-      }
-
-    }
-
-    window.loadQuestions = loadQuestions;
-
-
-    // ==========================================
-    // LOGIN USING FIREBASE
-    // ==========================================
-
-    async function login() {
-
-      const email = document
-        .getElementById("email")
-        .value
-        .trim();
-
-      const password = document
-        .getElementById("password")
-        .value
-        .trim();
-
-
-      // Empty field validation
-      if (!email || !password) {
-
-        document.getElementById("errorMsg").innerText =
-          "⚠️ Please enter Email and Password";
-
-        return;
-      }
-
-
-      try {
-
-        // Firebase Authentication
-        await window.firebaseLogin(email, password);
-
-
-        // Hide Login Box
-        document
-          .getElementById("loginBox")
-          .classList
-          .add("hidden");
-
-
-        // Show Quiz Box
-        document
-          .getElementById("quizBox")
-          .classList
-          .remove("hidden");
-
-
-        // Load Questions JSON
-        const resQ = await fetch("questions.json");
-
-        allQuestions = await resQ.json();
-
-
-        // Default load Java
-        loadQuestions("java");
-
-
-      } catch (err) {
-
-        console.error("Firebase Login Error:", err);
-
-        document.getElementById("errorMsg").innerText =
-          "❌ Invalid Email or Password";
-
-      }
-
-    }
-
-    window.login = login;
-
-
-    // ==========================================
-    // LOGOUT
-    // ==========================================
-
-    function logout() {
-
-      document
-        .getElementById("quizBox")
-        .classList
-        .add("hidden");
-
-
-      document
-        .getElementById("loginBox")
-        .classList
-        .remove("hidden");
-
-
-      document.getElementById("email").value = "";
-
-      document.getElementById("password").value = "";
-
-      document.getElementById("errorMsg").innerText = "";
-
-    }
-
-    window.logout = logout;
-
-
-    // ==========================================
-    // BACK TO HOME
-    // ==========================================
-
-    function backto() {
-
-      document.location.href = "index.html";
-
-    }
-
-
-    // ==========================================
-    // QUIZ PAGE
-    // ==========================================
-
-    function quixeload() {
-
-      document.location.href = "quiz.html";
-
-    }
-
   </script>
 
 </body>
