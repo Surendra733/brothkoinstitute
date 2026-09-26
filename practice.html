@@ -7,13 +7,25 @@
 
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Firebase -->
+  <!-- Firebase SDKs -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
     import {
       getAuth,
-      signInWithEmailAndPassword
+      signInWithEmailAndPassword,
+      createUserWithEmailAndPassword,
+      sendEmailVerification,
+      signOut,
+      onAuthStateChanged
     } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js";
+    import {
+      getFirestore,
+      doc,
+      setDoc,
+      getDoc,
+      collection,
+      getDocs
+    } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
 
     // Your Firebase configuration
     const firebaseConfig = {
@@ -27,13 +39,103 @@
 
     // Initialize Firebase
     const app = initializeApp(firebaseConfig);
-
-    // Initialize Firebase Authentication
     const auth = getAuth(app);
+    const db = getFirestore(app);
+
+    let currentUser = null;
+
+    // Check Authentication state & Email Verification
+    onAuthStateChanged(auth, async (user) => {
+      if (user) {
+        await user.reload();
+        if (!user.emailVerified) {
+          document.getElementById("errorMsg").innerText = "⚠️ Please verify your email via the link sent to your inbox before logging in.";
+          await signOut(auth);
+          return;
+        }
+
+        currentUser = user;
+        const docSnap = await getDoc(doc(db, "students", user.uid));
+        if (docSnap.exists()) {
+          // If profile is already registered/completed, load quiz box directly
+          initQuizAppAfterLogin();
+        }
+      }
+    });
 
     // Firebase Login Function
     window.firebaseLogin = async function(email, password) {
       return await signInWithEmailAndPassword(auth, email, password);
+    };
+
+    // Firebase Student Registration Function
+    window.firebaseRegister = async function() {
+      const email = document.getElementById("regEmail").value.trim();
+      const password = document.getElementById("regPassword").value.trim();
+      const name = document.getElementById("regName").value.trim();
+      const fatherName = document.getElementById("regFatherName").value.trim();
+      const enrollmentNo = document.getElementById("regEnrollment").value.trim();
+      const college = document.getElementById("regCollege").value.trim();
+      const course = document.getElementById("regCourse").value.trim();
+      const branch = document.getElementById("regBranch").value.trim();
+      const regError = document.getElementById("regError");
+      regError.innerText = "";
+
+      if (!email || !password || !name || !fatherName || !enrollmentNo || !college || !course || !branch) {
+        regError.innerText = "⚠️ Please fill all registration fields!";
+        return;
+      }
+
+      if (password.length < 6) {
+        regError.innerText = "⚠️ Password must be at least 6 characters long";
+        return;
+      }
+
+      try {
+        const userCred = await createUserWithEmailAndPassword(auth, email, password);
+        
+        // Save full student details to Firestore database
+        await setDoc(doc(db, "students", userCred.user.uid), {
+          name,
+          fatherName,
+          enrollmentNo,
+          email,
+          college,
+          course,
+          branch,
+          createdAt: new Date()
+        });
+
+        // Send Email Verification
+        await sendEmailVerification(userCred.user);
+        alert("✨ Registration Successful! A verification link has been sent to " + email + ". Please check your inbox, verify your email, and then log in.");
+        
+        // Sign out temporarily until email is verified and switch back to login view
+        await signOut(auth);
+        toggleRegisterView();
+      } catch (err) {
+        console.error("Registration Error:", err);
+        regError.innerText = "❌ " + err.message;
+      }
+    };
+
+    // Fetch questions from Firestore admin database
+    window.fetchAdminQuestions = async function() {
+      try {
+        const querySnapshot = await getDocs(collection(db, "questions"));
+        let loadedQuestions = { java: [], python: [], htmlcss: [], javascript: [] };
+        
+        querySnapshot.forEach((docSnap) => {
+          let qData = docSnap.data();
+          if (loadedQuestions[qData.subject]) {
+            loadedQuestions[qData.subject].push(qData);
+          }
+        });
+        return loadedQuestions;
+      } catch (err) {
+        console.error("Error fetching questions:", err);
+        return {};
+      }
     };
   </script>
 </head>
@@ -41,7 +143,7 @@
 <body class="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 min-h-screen flex items-center justify-center p-6">
 
   <!-- Login Box -->
-  <div id="loginBox" class="bg-white shadow-2xl rounded-2xl p-8 w-full max-w-md transform transition-all hover:scale-105 duration-300">
+  <div id="loginBox" class="bg-white shadow-2xl rounded-2xl p-8 w-full max-w-md transform transition-all duration-300">
 
     <h2 class="text-3xl font-extrabold text-center text-indigo-600 mb-6">
       Login to Practice
@@ -69,13 +171,54 @@
     </button>
 
     <button
+      onclick="toggleRegisterView()"
+      class="w-full bg-purple-600 hover:bg-purple-700 text-white py-3 rounded-xl mt-3 font-semibold shadow-md transition-all"
+    >
+      ✨ New Student? Register Here
+    </button>
+
+    <button
       onclick="backto()"
       class="w-full bg-gray-700 hover:bg-gray-800 text-white py-3 rounded-xl mt-3 font-semibold shadow-md transition-all"
     >
       🏠 Back To Home
     </button>
 
-    <p id="errorMsg" class="text-red-600 mt-4 text-center font-semibold"></p>
+    <p id="errorMsg" class="text-red-600 mt-4 text-center font-semibold text-sm"></p>
+
+  </div>
+
+  <!-- Register Box (Hidden by default) -->
+  <div id="registerBox" class="bg-white shadow-2xl rounded-2xl p-8 w-full max-w-md hidden">
+
+    <h2 class="text-3xl font-extrabold text-center text-purple-600 mb-6">
+      Student Registration
+    </h2>
+
+    <input id="regName" type="text" placeholder="👤 Full Name" class="w-full border rounded-xl p-3 mb-3 outline-none">
+    <input id="regFatherName" type="text" placeholder="👨‍👦 Father's Name" class="w-full border rounded-xl p-3 mb-3 outline-none">
+    <input id="regEnrollment" type="text" placeholder="🔢 Enrollment Number" class="w-full border rounded-xl p-3 mb-3 outline-none">
+    <input id="regEmail" type="email" placeholder="📧 Email" class="w-full border rounded-xl p-3 mb-3 outline-none">
+    <input id="regPassword" type="password" placeholder="🔑 Password (min 6 characters)" class="w-full border rounded-xl p-3 mb-3 outline-none">
+    <input id="regCollege" type="text" placeholder="🏫 College Name" class="w-full border rounded-xl p-3 mb-3 outline-none">
+    <input id="regCourse" type="text" placeholder="📚 Course (e.g. BCA / B.Tech)" class="w-full border rounded-xl p-3 mb-3 outline-none">
+    <input id="regBranch" type="text" placeholder="💻 Branch (e.g. CSE / IT)" class="w-full border rounded-xl p-3 mb-4 outline-none">
+
+    <button
+      onclick="firebaseRegister()"
+      class="w-full bg-purple-600 hover:bg-purple-700 text-white py-3 rounded-xl font-semibold shadow-md transition-all"
+    >
+      ✨ Register & Verify Email
+    </button>
+
+    <button
+      onclick="toggleRegisterView()"
+      class="w-full bg-gray-700 hover:bg-gray-800 text-white py-3 rounded-xl mt-3 font-semibold shadow-md transition-all"
+    >
+      🔙 Back To Login
+    </button>
+
+    <p id="regError" class="text-red-600 mt-4 text-center font-semibold text-sm"></p>
 
   </div>
 
@@ -162,6 +305,11 @@
 
       container.innerHTML = "";
 
+      if (!questions || questions.length === 0) {
+        container.innerHTML = `<p class="text-center text-gray-500 py-4">No questions added by admin for this subject yet.</p>`;
+        return;
+      }
+
       questions.forEach((q, index) => {
 
         const div = document.createElement("div");
@@ -205,6 +353,8 @@
     function checkAnswer(index, selected, btn) {
 
       const correct = currentQuestions[index].answer;
+      const parent = btn.parentElement;
+      parent.querySelectorAll(".option-btn").forEach(b => b.classList.remove("bg-green-500", "bg-red-500", "text-white"));
 
       if (selected === correct) {
 
@@ -278,30 +428,7 @@
         // Firebase Authentication
         await window.firebaseLogin(email, password);
 
-
-        // Hide Login Box
-        document
-          .getElementById("loginBox")
-          .classList
-          .add("hidden");
-
-
-        // Show Quiz Box
-        document
-          .getElementById("quizBox")
-          .classList
-          .remove("hidden");
-
-
-        // Load Questions JSON
-        const resQ = await fetch("questions.json");
-
-        allQuestions = await resQ.json();
-
-
-        // Default load Java
-        loadQuestions("java");
-
+        initQuizAppAfterLogin();
 
       } catch (err) {
 
@@ -315,6 +442,52 @@
     }
 
     window.login = login;
+
+
+    // ==========================================
+    // INITIALIZE AFTER SUCCESSFUL LOGIN
+    // ==========================================
+
+    async function initQuizAppAfterLogin() {
+      // Hide Login Box
+      document
+        .getElementById("loginBox")
+        .classList
+        .add("hidden");
+
+      document
+        .getElementById("registerBox")
+        .classList
+        .add("hidden");
+
+
+      // Show Quiz Box
+      document
+        .getElementById("quizBox")
+        .classList
+        .remove("hidden");
+
+
+      // Load Questions from Admin Database (Firestore)
+      allQuestions = await window.fetchAdminQuestions();
+
+
+      // Default load Java
+      loadQuestions("java");
+    }
+
+
+    // ==========================================
+    // TOGGLE BETWEEN LOGIN & REGISTER VIEWS
+    // ==========================================
+
+    function toggleRegisterView() {
+      document.getElementById("loginBox").classList.toggle("hidden");
+      document.getElementById("registerBox").classList.toggle("hidden");
+      document.getElementById("errorMsg").innerText = "";
+      document.getElementById("regError").innerText = "";
+    }
+    window.toggleRegisterView = toggleRegisterView;
 
 
     // ==========================================
